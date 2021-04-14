@@ -25,6 +25,23 @@ static cl::extrahelp CommonHelp(CommonOptionsParser::HelpMessage);
 // A help message for this specific tool can be added afterwards.
 static cl::extrahelp MoreHelp("\nMore help text...\n");
 
+std::vector<std::string> getCompileArgs(
+    const std::vector<clang::tooling::CompileCommand> &compileCommands) {
+  std::vector<std::string> compileArgs;
+
+  for (auto &cmd : compileCommands) {
+    for (auto &arg : cmd.CommandLine)
+      compileArgs.push_back(arg);
+  }
+
+  if (compileArgs.empty() == false) {
+    compileArgs.erase(begin(compileArgs));
+    compileArgs.pop_back();
+  }
+
+  return compileArgs;
+}
+
 int main(int argc, const char **argv) {
   auto ExpectedParser = CommonOptionsParser::create(argc, argv, MyToolCategory,
                                                     llvm::cl::ZeroOrMore);
@@ -33,9 +50,19 @@ int main(int argc, const char **argv) {
     llvm::errs() << ExpectedParser.takeError();
     return 1;
   }
-  CommonOptionsParser &OptionsParser = ExpectedParser.get();
-  ClangTool Tool(OptionsParser.getCompilations(),
-                 OptionsParser.getSourcePathList());
+  CommonOptionsParser &optionsParser = ExpectedParser.get();
+
+  auto sourceFile = *optionsParser.getSourcePathList().begin();
+  auto compileCommands = optionsParser.getCompilations().getCompileCommands(
+      getAbsolutePath(sourceFile));
+  std::vector<std::string> compileArgs = getCompileArgs(compileCommands);
+
+  for (auto &s : compileArgs)
+    llvm::outs() << s << '\n';
+
+  // std::vector<std::string>
+  ClangTool Tool(optionsParser.getCompilations(),
+                 optionsParser.getSourcePathList());
 
   LoopPrinter Printer;
   MatchFinder Finder;

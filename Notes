@@ -1,0 +1,3 @@
+Required flags for my OSX:
+-I/usr/local/opt/llvm/bin/../include/c++/v1 
+-I/usr/local/Cellar/llvm/11.1.0/lib/clang/11.1.0/include

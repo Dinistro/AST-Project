@@ -7,6 +7,10 @@ StatementMatcher ast::LoopMatcher =
         .bind("forLoop");
 
 void LoopPrinter::run(const MatchFinder::MatchResult &Result) {
-  if (const ForStmt *FS = Result.Nodes.getNodeAs<clang::ForStmt>("forLoop"))
-    FS->dump();
+  ASTContext *Context = Result.Context;
+  const ForStmt *FS = Result.Nodes.getNodeAs<ForStmt>("forLoop");
+  // We do not want to convert header files!
+  if (!FS || !Context->getSourceManager().isWrittenInMainFile(FS->getForLoc()))
+    return;
+  FS->dump();
 } // namespace ast
