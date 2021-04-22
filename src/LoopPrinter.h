@@ -1,5 +1,5 @@
-#ifndef AST_LOOP_CONVERTER_H
-#define AST_LOOP_CONVERTER_H
+#ifndef AST_LOOP_PRINTER_H
+#define AST_LOOP_PRINTER_H
 
 #include "clang/ASTMatchers/ASTMatchFinder.h"
 #include "clang/ASTMatchers/ASTMatchers.h"
@@ -20,4 +20,4 @@ public:
 
 } // namespace ast
 
-#endif // AST_LOOP_CONVERTER_H
+#endif // AST_LOOP_PRINTER_H

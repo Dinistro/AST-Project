@@ -7,7 +7,9 @@
 // Declares llvm::cl::extrahelp.
 #include "llvm/Support/CommandLine.h"
 
-#include "./LoopConverter.h"
+#include "./CustomFrontendAction.h"
+#include "./LoopPrinter.h"
+#include "./LoopTransformer.h"
 
 using namespace clang::tooling;
 using namespace llvm;
@@ -52,21 +54,28 @@ int main(int argc, const char **argv) {
   }
   CommonOptionsParser &optionsParser = ExpectedParser.get();
 
-  auto sourceFile = *optionsParser.getSourcePathList().begin();
-  auto compileCommands = optionsParser.getCompilations().getCompileCommands(
-      getAbsolutePath(sourceFile));
-  std::vector<std::string> compileArgs = getCompileArgs(compileCommands);
+  // auto sourceFile = *optionsParser.getSourcePathList().begin();
+  // auto compileCommands = optionsParser.getCompilations().getCompileCommands(
+  //    getAbsolutePath(sourceFile));
+  // std::vector<std::string> compileArgs = getCompileArgs(compileCommands);
 
-  for (auto &s : compileArgs)
-    llvm::outs() << s << '\n';
+  // for (auto &s : compileArgs)
+  //  llvm::outs() << s << '\n';
 
   // std::vector<std::string>
   ClangTool Tool(optionsParser.getCompilations(),
                  optionsParser.getSourcePathList());
 
-  LoopPrinter Printer;
-  MatchFinder Finder;
-  Finder.addMatcher(LoopMatcher, &Printer);
+  // LoopPrinter Printer;
+  // MatchFinder Finder;
+  // Finder.addMatcher(LoopMatcher, &Printer);
+  // registerLoopTransformer(Finder);
 
-  return Tool.run(newFrontendActionFactory(&Finder).get());
+  // return Tool.run(newFrontendActionFactory(&Finder).get());
+
+  CustomFrontendAction frontendAction;
+  // TODO we need a custom action to get insert an AST consumer, I think
+  return Tool.run(newFrontendActionFactory<CustomFrontendAction>().get());
+  // auto frontendAction = std::make_unique<CustomFrontendAction>();
+  // return Tool.run(std::move(frontendAction));
 }
