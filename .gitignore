@@ -46,6 +46,8 @@ autoconf/autom4te.cache
 /CMakeSettings.json
 # CLion project configuration
 /.idea
+# Custom vim configs
+/.vimrc
 
 #==============================================================================#
 # Directories to ignore (do not add trailing '/'s, they skip symlinks).
