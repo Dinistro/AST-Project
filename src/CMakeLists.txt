@@ -14,6 +14,7 @@ set(CLANG_LIBS
     clangLex
     clangSerialization
     clangTooling
+    clangToolingRefactoring
     )
 
 
@@ -22,9 +23,7 @@ set(CLANG_LIBS
 
 add_executable(ast-project 
     Main.cpp
-    LoopPrinter.cpp
-    LoopTransformer.cpp
-    CustomFrontendAction.cpp
-    CustomConsumer.cpp
+    CustomRefactoringAction.cpp
+    CustomRefactoringRule.cpp
 )
 target_link_libraries(ast-project ${CLANG_LIBS} ${LLVM_LIBS_CORE} ${LLVM_LDFLAGS})

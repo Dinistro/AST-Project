@@ -1,17 +1,21 @@
 // Based on https://clang.llvm.org/docs/LibASTMatchersTutorial.html
 
 // Declares clang::SyntaxOnlyAction.
+#include "clang/ASTMatchers/ASTMatchers.h"
 #include "clang/Frontend/FrontendActions.h"
 #include "clang/Tooling/CommonOptionsParser.h"
+#include "clang/Tooling/Refactoring.h"
+#include "clang/Tooling/Refactoring/RefactoringAction.h"
+#include "clang/Tooling/Refactoring/RefactoringActionRules.h"
+#include "clang/Tooling/RefactoringCallbacks.h"
 #include "clang/Tooling/Tooling.h"
 // Declares llvm::cl::extrahelp.
 #include "llvm/Support/CommandLine.h"
 
-#include "./CustomFrontendAction.h"
-#include "./LoopPrinter.h"
-#include "./LoopTransformer.h"
+#include "./CustomRefactoringAction.h"
 
 using namespace clang::tooling;
+using namespace clang::ast_matchers;
 using namespace llvm;
 using namespace ast;
 
@@ -44,6 +48,31 @@ std::vector<std::string> getCompileArgs(
   return compileArgs;
 }
 
+class CustomCallback : public RefactoringCallback {
+public:
+  CustomCallback(StringRef FromId, StringRef ToText)
+      : FromId(FromId), ToText(ToText) {}
+  void run(const ast_matchers::MatchFinder::MatchResult &Result) override {
+    ASTContext *context = Result.Context;
+    if (const Stmt *FromMatch = Result.Nodes.getNodeAs<Stmt>(FromId)) {
+      if (!context->getSourceManager().isWrittenInMainFile(
+              FromMatch->getBeginLoc()))
+        return;
+      FromMatch->dump();
+      auto Err = Replace.add(tooling::Replacement(
+          *Result.SourceManager,
+          CharSourceRange::getTokenRange(FromMatch->getSourceRange()), ToText));
+      if (Err) {
+        llvm::errs() << llvm::toString(std::move(Err)) << "\n";
+        assert(false);
+      }
+    }
+  }
+
+private:
+  std::string FromId;
+  std::string ToText;
+};
 int main(int argc, const char **argv) {
   auto ExpectedParser = CommonOptionsParser::create(argc, argv, MyToolCategory,
                                                     llvm::cl::ZeroOrMore);
@@ -54,28 +83,15 @@ int main(int argc, const char **argv) {
   }
   CommonOptionsParser &optionsParser = ExpectedParser.get();
 
-  // auto sourceFile = *optionsParser.getSourcePathList().begin();
-  // auto compileCommands = optionsParser.getCompilations().getCompileCommands(
-  //    getAbsolutePath(sourceFile));
-  // std::vector<std::string> compileArgs = getCompileArgs(compileCommands);
+  RefactoringTool Tool(optionsParser.getCompilations(),
+                       optionsParser.getSourcePathList());
 
-  // for (auto &s : compileArgs)
-  //  llvm::outs() << s << '\n';
+  ASTMatchRefactorer Finder(Tool.getReplacements());
+  CustomCallback Callback("integer", "42");
+  Finder.addMatcher(integerLiteral().bind("integer"), &Callback);
 
-  // std::vector<std::string>
-  ClangTool Tool(optionsParser.getCompilations(),
-                 optionsParser.getSourcePathList());
-
-  // LoopPrinter Printer;
-  // MatchFinder Finder;
-  // Finder.addMatcher(LoopMatcher, &Printer);
-  // registerLoopTransformer(Finder);
-
-  // return Tool.run(newFrontendActionFactory(&Finder).get());
-
-  CustomFrontendAction frontendAction;
-  // TODO we need a custom action to get insert an AST consumer, I think
-  return Tool.run(newFrontendActionFactory<CustomFrontendAction>().get());
-  // auto frontendAction = std::make_unique<CustomFrontendAction>();
-  // return Tool.run(std::move(frontendAction));
+  if (Tool.runAndSave(newFrontendActionFactory(&Finder).get())) {
+    llvm::errs() << "Ds Tool stinkt\n";
+    return 1;
+  }
 }
