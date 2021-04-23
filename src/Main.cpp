@@ -13,6 +13,7 @@
 #include "llvm/Support/CommandLine.h"
 
 #include "./CustomRefactoringAction.h"
+#include "./IfReorderCallback.h"
 
 using namespace clang::tooling;
 using namespace clang::ast_matchers;
@@ -58,14 +59,15 @@ public:
       if (!context->getSourceManager().isWrittenInMainFile(
               FromMatch->getBeginLoc()))
         return;
-      FromMatch->dump();
-      auto Err = Replace.add(tooling::Replacement(
-          *Result.SourceManager,
-          CharSourceRange::getTokenRange(FromMatch->getSourceRange()), ToText));
-      if (Err) {
-        llvm::errs() << llvm::toString(std::move(Err)) << "\n";
-        assert(false);
-      }
+      // FromMatch->dump();
+      // auto Err = Replace.add(tooling::Replacement(
+      //    *Result.SourceManager,
+      //    CharSourceRange::getTokenRange(FromMatch->getSourceRange()),
+      //    ToText));
+      // if (Err) {
+      //  llvm::errs() << llvm::toString(std::move(Err)) << "\n";
+      //  assert(false);
+      //}
     }
   }
 
@@ -87,11 +89,11 @@ int main(int argc, const char **argv) {
                        optionsParser.getSourcePathList());
 
   ASTMatchRefactorer Finder(Tool.getReplacements());
-  CustomCallback Callback("integer", "42");
-  Finder.addMatcher(integerLiteral().bind("integer"), &Callback);
+  // CustomCallback Callback("integer", "42");
+  // Finder.addMatcher(integerLiteral().bind("integer"), &Callback);
+  IfReorderCallback::registerInMatcher(Finder);
 
   if (Tool.runAndSave(newFrontendActionFactory(&Finder).get())) {
-    llvm::errs() << "Ds Tool stinkt\n";
     return 1;
   }
 }
