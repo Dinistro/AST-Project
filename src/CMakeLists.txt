@@ -23,8 +23,6 @@ set(CLANG_LIBS
 
 add_executable(ast-project 
     Main.cpp
-    CustomRefactoringAction.cpp
-    CustomRefactoringRule.cpp
     IfReorderCallback.cpp
 )
 target_link_libraries(ast-project ${CLANG_LIBS} ${LLVM_LIBS_CORE} ${LLVM_LDFLAGS})

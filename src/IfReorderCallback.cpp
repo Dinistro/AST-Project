@@ -36,7 +36,7 @@ static Replacement negateExpr(SourceManager &Sources, const Expr &expr) {
                         Sources, LangOptions())
                         .str();
   str = "!(" + str + ")";
-  llvm::errs() << str;
+  llvm::errs() << str << "\n";
   return tooling::Replacement(
       Sources, CharSourceRange::getTokenRange(expr.getSourceRange()),
       llvm::StringRef(str));

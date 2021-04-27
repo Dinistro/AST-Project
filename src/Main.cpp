@@ -12,7 +12,6 @@
 // Declares llvm::cl::extrahelp.
 #include "llvm/Support/CommandLine.h"
 
-#include "./CustomRefactoringAction.h"
 #include "./IfReorderCallback.h"
 
 using namespace clang::tooling;
