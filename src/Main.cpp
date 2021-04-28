@@ -12,6 +12,7 @@
 // Declares llvm::cl::extrahelp.
 #include "llvm/Support/CommandLine.h"
 
+#include "./AddReorderCallback.h"
 #include "./IfReorderCallback.h"
 
 using namespace clang::tooling;
@@ -31,49 +32,8 @@ static cl::extrahelp CommonHelp(CommonOptionsParser::HelpMessage);
 // A help message for this specific tool can be added afterwards.
 static cl::extrahelp MoreHelp("\nMore help text...\n");
 
-std::vector<std::string> getCompileArgs(
-    const std::vector<clang::tooling::CompileCommand> &compileCommands) {
-  std::vector<std::string> compileArgs;
-
-  for (auto &cmd : compileCommands) {
-    for (auto &arg : cmd.CommandLine)
-      compileArgs.push_back(arg);
-  }
-
-  if (compileArgs.empty() == false) {
-    compileArgs.erase(begin(compileArgs));
-    compileArgs.pop_back();
-  }
-
-  return compileArgs;
-}
-
-class CustomCallback : public RefactoringCallback {
-public:
-  CustomCallback(StringRef FromId, StringRef ToText)
-      : FromId(FromId), ToText(ToText) {}
-  void run(const ast_matchers::MatchFinder::MatchResult &Result) override {
-    ASTContext *context = Result.Context;
-    if (const Stmt *FromMatch = Result.Nodes.getNodeAs<Stmt>(FromId)) {
-      if (!context->getSourceManager().isWrittenInMainFile(
-              FromMatch->getBeginLoc()))
-        return;
-      // FromMatch->dump();
-      // auto Err = Replace.add(tooling::Replacement(
-      //    *Result.SourceManager,
-      //    CharSourceRange::getTokenRange(FromMatch->getSourceRange()),
-      //    ToText));
-      // if (Err) {
-      //  llvm::errs() << llvm::toString(std::move(Err)) << "\n";
-      //  assert(false);
-      //}
-    }
-  }
-
-private:
-  std::string FromId;
-  std::string ToText;
-};
+// TODO define flags that activate certain refactorings
+// Find out how to apply them in sequence
 int main(int argc, const char **argv) {
   auto ExpectedParser = CommonOptionsParser::create(argc, argv, MyToolCategory,
                                                     llvm::cl::ZeroOrMore);
@@ -88,9 +48,8 @@ int main(int argc, const char **argv) {
                        optionsParser.getSourcePathList());
 
   ASTMatchRefactorer Finder(Tool.getReplacements());
-  // CustomCallback Callback("integer", "42");
-  // Finder.addMatcher(integerLiteral().bind("integer"), &Callback);
   IfReorderCallback::registerInMatcher(Finder);
+  AddReorderCallback::registerInMatcher(Finder);
 
   if (Tool.runAndSave(newFrontendActionFactory(&Finder).get())) {
     return 1;
