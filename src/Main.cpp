@@ -14,6 +14,8 @@
 
 #include "./IfReorderCallback.h"
 
+#include <string>
+
 using namespace clang::tooling;
 using namespace clang::ast_matchers;
 using namespace llvm;
@@ -75,6 +77,16 @@ private:
   std::string ToText;
 };
 int main(int argc, const char **argv) {
+  int runIf = 0;
+  for(int i = 0; i < argc; i++) {
+    std::string argvstr = argv[i];
+    if(argvstr.compare("-if") == 0) {
+      runIf = 1;
+      //do not pass this
+      argc--;
+    }
+  }
+
   auto ExpectedParser = CommonOptionsParser::create(argc, argv, MyToolCategory,
                                                     llvm::cl::ZeroOrMore);
   if (!ExpectedParser) {
@@ -90,7 +102,9 @@ int main(int argc, const char **argv) {
   ASTMatchRefactorer Finder(Tool.getReplacements());
   // CustomCallback Callback("integer", "42");
   // Finder.addMatcher(integerLiteral().bind("integer"), &Callback);
-  IfReorderCallback::registerInMatcher(Finder);
+  if(runIf) {
+    IfReorderCallback::registerInMatcher(Finder);
+  }
 
   if (Tool.runAndSave(newFrontendActionFactory(&Finder).get())) {
     return 1;

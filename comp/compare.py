@@ -9,6 +9,7 @@ parser = argparse.ArgumentParser(description='comparison')
 parser.add_argument('--transformer', dest='transformer', required=False, default='all', 
         help='which transformer to run', nargs='+')
 parser.add_argument('--flag', dest='flag', required=False, default='', help='compiler flags to use', nargs='+')
+parser.add_argument('--printCmd', dest='printCmd', required=False, default=False, help='print commands')
 parser.add_argument('--compiler', dest='compiler', 
         required=False, default='g++', help='compiler to use')
 args = parser.parse_args()
@@ -37,7 +38,7 @@ for trans in transformers:
     toRun.append('cp examples/* ' + trans + '_folder/')
 
     #transforming
-    toRun.append('../build/bin/ast-project ' + trans + '_folder/* -- -I/usr/local/lib/clang/11.1.0/include')
+    toRun.append('../build/bin/ast-project ' + trans + '_folder/* -- -I/usr/local/lib/clang/11.1.0/include -' + trans)
 
     #compiling
     runString = args.compiler + ' '
@@ -61,5 +62,6 @@ toRun.append('rmdir init_asm')
 
 
 for cmd in toRun:
-    print(cmd)
+    if(args.printCmd):
+        print(cmd)
     subprocess.run(cmd, cwd=directory, text=True, timeout=30, shell=True)
