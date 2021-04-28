@@ -15,11 +15,15 @@
 #include "./AddReorderCallback.h"
 #include "./IfReorderCallback.h"
 
+#include <string>
+
 using namespace clang::tooling;
 using namespace clang::ast_matchers;
 using namespace llvm;
 using namespace ast;
 
+// TODO: look at CL options:
+// https://github.com/Superty/llvm-project/commit/3f76f3e2b77fb5836eaaac52a5f6e8b5dda0487b
 // Apply a custom category to all command-line options so that they are the
 // only ones displayed.
 static llvm::cl::OptionCategory MyToolCategory("my-tool options");
@@ -35,6 +39,16 @@ static cl::extrahelp MoreHelp("\nMore help text...\n");
 // TODO define flags that activate certain refactorings
 // Find out how to apply them in sequence
 int main(int argc, const char **argv) {
+  int runIf = 0;
+  for (int i = 0; i < argc; i++) {
+    std::string argvstr = argv[i];
+    if (argvstr.compare("-if") == 0) {
+      runIf = 1;
+      // do not pass this
+      argc--;
+    }
+  }
+
   auto ExpectedParser = CommonOptionsParser::create(argc, argv, MyToolCategory,
                                                     llvm::cl::ZeroOrMore);
   if (!ExpectedParser) {
@@ -48,7 +62,11 @@ int main(int argc, const char **argv) {
                        optionsParser.getSourcePathList());
 
   ASTMatchRefactorer Finder(Tool.getReplacements());
-  IfReorderCallback::registerInMatcher(Finder);
+  // CustomCallback Callback("integer", "42");
+  // Finder.addMatcher(integerLiteral().bind("integer"), &Callback);
+  if (runIf) {
+    IfReorderCallback::registerInMatcher(Finder);
+  }
   AddReorderCallback::registerInMatcher(Finder);
 
   if (Tool.runAndSave(newFrontendActionFactory(&Finder).get())) {
