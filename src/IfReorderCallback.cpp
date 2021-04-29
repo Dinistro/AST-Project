@@ -15,7 +15,6 @@ StatementMatcher ifMatcher =
         .bind("if");
 
 Replacement negateExpr(SourceManager &Sources, const Expr &expr) {
-  expr.getSourceRange().dump(Sources);
   std::string str = Lexer::getSourceText(
                         CharSourceRange::getTokenRange(expr.getSourceRange()),
                         Sources, LangOptions())
