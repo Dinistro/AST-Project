@@ -16,7 +16,7 @@ parser.add_argument('--compiler', dest='compiler',
         required=False, default='g++', help='compiler to use')
 args = parser.parse_args()
 
-transformers = ['if', 'add']
+transformers = ['if', 'add', 'forToWhile']
 
 directory = './compf'
 

@@ -13,6 +13,7 @@
 #include "llvm/Support/CommandLine.h"
 
 #include "./AddReorderCallback.h"
+#include "./ForToWhileCallback.h"
 #include "./IfReorderCallback.h"
 
 #include <string>
@@ -39,6 +40,10 @@ static cl::opt<bool> ASTif("if", cl::desc("Turn on ifReorderer"),
 static cl::opt<bool> ASTadd("add", cl::desc("Turn on addReorderer"),
                             cl::init(false), cl::cat(TransformCategory));
 
+static cl::opt<bool> ASTForToWhile("forToWhile",
+                                   cl::desc("Turn on forToWhile transformer"),
+                                   cl::init(false), cl::cat(TransformCategory));
+
 // TODO define flags that activate certain
 // refactorings Find out how to apply them in
 // sequence
@@ -58,16 +63,13 @@ int main(int argc, const char **argv) {
                        optionsParser.getSourcePathList());
 
   ASTMatchRefactorer Finder(Tool.getReplacements());
-  // CustomCallback Callback("integer", "42");
-  // Finder.addMatcher(integerLiteral().bind("integer"),
-  // &Callback);
 
   if (ASTif)
     IfReorderCallback::registerInMatcher(Finder);
   if (ASTadd)
     AddReorderCallback::registerInMatcher(Finder);
+  if (ASTForToWhile)
+    ForToWhileCallback::registerInMatcher(Finder);
 
-  if (Tool.runAndSave(newFrontendActionFactory(&Finder).get())) {
-    return 1;
-  }
+  return (Tool.runAndSave(newFrontendActionFactory(&Finder).get()));
 }

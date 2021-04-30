@@ -25,5 +25,6 @@ add_executable(ast-project
     Main.cpp
     IfReorderCallback.cpp
     AddReorderCallback.cpp
+    ForToWhileCallback.cpp
 )
 target_link_libraries(ast-project ${CLANG_LIBS} ${LLVM_LIBS_CORE} ${LLVM_LDFLAGS})
