@@ -31,12 +31,8 @@ void LoopTransformer::run(const MatchFinder::MatchResult &result) {
   if (!fs || !context->getSourceManager().isWrittenInMainFile(fs->getForLoc()))
     return;
 
-  fs->dump();
   const VarDecl *IncVar = result.Nodes.getNodeAs<VarDecl>("varDecl");
   if (!IncVar)
     return;
-  IncVar->dump();
-
-  llvm::outs() << "FUUBAR\n";
 }
 

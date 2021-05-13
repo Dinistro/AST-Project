@@ -16,13 +16,20 @@ parser.add_argument('--printCmd', dest='printCmd', required=False, type=bool, co
 parser.add_argument('--combo', dest='combo', required=False, type=bool, const=True, default=False, help='combine rewriters', nargs='?')
 parser.add_argument('--clangFlag', dest='clangFlag', required=False, default='', help='additional clang flags')
 parser.add_argument('--nodelete', dest='nodelete', required=False, type=bool, const=False, default=True, help='dont delete asm files', nargs='?')
+parser.add_argument('--csmith', dest='csmith', required=False, type=bool, const=True, default=False, help='run csmith examples', nargs='?')
 parser.add_argument('--compiler', dest='compiler', 
-        required=False, default='g++', help='compiler to use')
+        required=False, default='gcc', help='compiler to use')
 args = parser.parse_args()
 
 transformers = ['if', 'add', 'forToWhile']
 
 directory = './compf'
+examples_path = 'examples/'
+num_examples = 30
+
+if args.csmith:
+    examples_path = 'csmith_ex/'
+    num_examples = 1000
 
 toRun = []
 
@@ -30,11 +37,14 @@ deleteRun = []
 
 f = open('build/bin/builtInInclude.path', 'r')
 if(not f):
-    print('please run make and make sure to be running in compf/')
+    print('please run make')
     exit(1)
 
 includePath = f.read()
 includePath = includePath[:len(includePath)-1]
+
+includePath += ' -I${CSMITH_HOME}/runtime'
+
 
 if(args.transformer != 'all'):
     transformers = args.transformer
@@ -63,16 +73,16 @@ for powset in transformers_pset:
     print(powerstring)
     toRun.append('mkdir ' +  powerstring + '_folder')
     toRun.append('mkdir ' +  powerstring + '_asm')
-    toRun.append('cp ../examples/* ' + powerstring + '_folder/')
+    toRun.append('cp ../' + examples_path +'* ' + powerstring + '_folder/')
    
     for trans in powset: 
         #transforming
         toRun.append('../build/bin/ast-project ' + powerstring + '_folder/* --' 
-                    + trans + ' -- -I' + includePath + ' ' + args.clangFlag)
+                    + trans + ' -- -I' + includePath + ' -Wno-narrowing -fpermissive -w' + args.clangFlag)
     
     #compiling
     #TODO: Do not compile files that are equal to initial
-    runString = args.compiler + ' '
+    runString = args.compiler + ' -Wno-narrowing -fpermissive -w '
     for fl in args.flag:
         runString += '-' + fl + ' '
     runString += powerstring + '_folder/* -S'
@@ -96,7 +106,7 @@ if True:
     currentSizes = []
     powerstring = ''
     print(powerstring)
-    for i in range(0,30):
+    for i in range(0,num_examples):
         currentSizes.append(os.path.getsize('compf/' + powerstring + '_asm/prog' + str(i) + '.s'))
     binarySizes[powerstring] = currentSizes
 
@@ -107,7 +117,7 @@ for powset in transformers_pset:
     currentSizes = []
     powerstring = ''.join(powset)
     print(powerstring)
-    for i in range(0,30):
+    for i in range(0,num_examples):
         currentSizes.append(os.path.getsize('compf/' + powerstring + '_asm/prog' + str(i) + '.s'))
     binarySizes[powerstring] = currentSizes
 

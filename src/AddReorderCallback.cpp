@@ -25,7 +25,6 @@ void AddReorderCallback::run(const MatchFinder::MatchResult &Result) {
     return;
   if (!sm.isWrittenInMainFile(expr->getBeginLoc()))
     return;
-  llvm::outs() << "Found one expr\n";
 
   auto lhs = Result.Nodes.getNodeAs<Expr>("lhs");
   auto rhs = Result.Nodes.getNodeAs<Expr>("rhs");
