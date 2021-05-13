@@ -27,6 +27,9 @@
 # Nested comparison directory
 /compf*
 
+#csmith files
+/csmith_ex*
+
 #==============================================================================#
 # Explicit files to ignore (only matches one).
 #==============================================================================#
