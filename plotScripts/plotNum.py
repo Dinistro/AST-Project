@@ -16,34 +16,35 @@ data = json.load(f)
 keys = list(data.keys())
 vals = list(data.values())
 
-#print(keys)
+print(keys)
 
 val_arr = np.array(vals)
 #print(val_arr)
 
 sums = np.sum(val_arr, axis=(1))
-#print(sums)
+print(sums)
 
 baseline = val_arr[0]
 #print(baseline)
 
 normed_list = []
-for i in range(0, 8):
+for i in range(0, 16):
     normed_list.append(abs(val_arr[i]-baseline))
 
 normed = np.array(normed_list)
 #print(normed) 
 
 rel_err_list = []
-for i in range(0, 8):
+for i in range(0, 16):
     rel_err_list.append(normed[i]/baseline * 100)
 rel = np.array(rel_err_list)
 #print(rel)
 
+#print(val_arr.shape)
 big_diff_list = []
-for i in range(0, 8):
-    currents = np.where(rel[i] > 1)
-    #print(np.where(rel[i] > 1))
+for i in range(0, 16):
+    currents = np.where(rel[i] >= 1)
+    #print(np.where(rel[i] >= 1))
     big_diff_list.append(len(currents[0]))
 big_diff = np.array(big_diff_list)
 print(big_diff)
@@ -54,11 +55,11 @@ matplotlib.rc('font', **font)
 
 
 fig, ax = plt.subplots(figsize=(12,8))
-bars = [0, 1, 2, 3, 4, 5, 6, 7]
+bars = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
 #posFirst = [x - 0.2 for x in bars]
 #posThird = [x + 0.2 for x in bars]
 
-plt.ylim([0, 100])
+plt.ylim([0, 1000])
 
 ax.spines['right'].set_visible(False)
 ax.spines['top'].set_visible(False)

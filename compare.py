@@ -21,7 +21,7 @@ parser.add_argument('--compiler', dest='compiler',
         required=False, default='gcc', help='compiler to use')
 args = parser.parse_args()
 
-transformers = ['if', 'add', 'forToWhile']
+transformers = ['if', 'ifElseBreakup', 'add', 'forToWhile']
 
 directory = './compf'
 examples_path = 'examples/'
@@ -29,7 +29,7 @@ num_examples = 30
 
 if args.csmith:
     examples_path = 'csmith_ex/'
-    num_examples = 100
+    num_examples = 1000
 
 toRun = []
 
@@ -121,7 +121,7 @@ for powset in transformers_pset:
         currentSizes.append(os.path.getsize('compf/' + powerstring + '_asm/prog' + str(i) + '.s'))
     binarySizes[powerstring] = currentSizes
 
-print(binarySizes)
+#print(binarySizes)
 f = open('result.txt', 'w') 
 f.write(json.dumps(binarySizes))
 
