@@ -24,5 +24,12 @@ inline Replacement replaceTWithT(SourceManager &Sources, const T &From,
       Lexer::getSourceText(CharSourceRange::getTokenRange(To.getSourceRange()),
                            Sources, LangOptions()));
 }
+
+template <class T>
+StringRef strOfT(SourceManager &Sources, T t) {
+  return Lexer::getSourceText(
+      CharSourceRange::getTokenRange(t->getSourceRange()), Sources,
+      LangOptions());
+}
 } // namespace ast
 #endif // AST_REPLACEMENT_UTILS_H

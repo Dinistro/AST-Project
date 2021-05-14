@@ -15,12 +15,6 @@ StatementMatcher forMatcher =
             optionally(hasCondition(expr().bind("cond"))),
             optionally(hasBody(stmt().bind("body"))))
         .bind("for");
-template <class T>
-StringRef strOfT(SourceManager &Sources, T t) {
-  return Lexer::getSourceText(
-      CharSourceRange::getTokenRange(t->getSourceRange()), Sources,
-      LangOptions());
-}
 
 /// Receives two statements that both represent the body. Depending on the type,
 /// it will return a slightly different body representation.
@@ -53,7 +47,6 @@ void ForToWhileCallback::run(const MatchFinder::MatchResult &Result) {
   const auto *body = Result.Nodes.getNodeAs<Stmt>("body");
   const auto *compoundBody = Result.Nodes.getNodeAs<CompoundStmt>("body");
 
-  // TODO find the clang StringBuilder class
   std::string repStr;
   llvm::raw_string_ostream repStrStream(repStr);
   repStrStream << "{\n";

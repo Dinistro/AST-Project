@@ -24,6 +24,7 @@ set(CLANG_LIBS
 add_executable(ast-project 
     Main.cpp
     IfReorderCallback.cpp
+    IfElseBreakupCallback.cpp
     AddReorderCallback.cpp
     ForToWhileCallback.cpp
 )
