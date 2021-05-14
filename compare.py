@@ -29,7 +29,7 @@ num_examples = 30
 
 if args.csmith:
     examples_path = 'csmith_ex/'
-    num_examples = 1000
+    num_examples = 100
 
 toRun = []
 
@@ -82,7 +82,7 @@ for powset in transformers_pset:
     
     #compiling
     #TODO: Do not compile files that are equal to initial
-    runString = args.compiler + ' -Wno-narrowing -fpermissive -w '
+    runString = args.compiler + ' -I${CSMITH_HOME}/runtime -Wno-narrowing -fpermissive -w '
     for fl in args.flag:
         runString += '-' + fl + ' '
     runString += powerstring + '_folder/* -S'
