@@ -49,7 +49,7 @@ includePath += ' -I${CSMITH_HOME}/runtime'
 if(args.transformer != 'all'):
     transformers = args.transformer
 
-subprocess.run('mkdir compf', cwd='./', text=True, timeout=30, shell=True)
+subprocess.run('mkdir compf', cwd='./', text=True, timeout=60, shell=True)
 
 def powerset(A):
     if A == []:
@@ -98,7 +98,7 @@ for powset in transformers_pset:
 for cmd in toRun:
     if(args.printCmd):
         print(cmd)
-    subprocess.run(cmd, cwd=directory, text=True, timeout=30, shell=True)
+    subprocess.run(cmd, cwd=directory, text=True, timeout=60, shell=True)
 
 binarySizes = {}
 
@@ -129,6 +129,6 @@ if args.nodelete:
     for cmd in deleteRun:
         if(args.printCmd):
             print(cmd)
-        subprocess.run(cmd, cwd=directory, text=True, timeout=30, shell=True)
+        subprocess.run(cmd, cwd=directory, text=True, timeout=60, shell=True)
 
-    subprocess.run('rmdir compf', cwd='./', text=True, timeout=30, shell=True)
+    subprocess.run('rmdir compf', cwd='./', text=True, timeout=60, shell=True)

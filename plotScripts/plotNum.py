@@ -3,19 +3,50 @@ import matplotlib.pyplot as plt
 import numpy as np
 import matplotlib
 
+import json
+
 matplotlib.rcParams['pdf.fonttype'] = 42
 matplotlib.rcParams['ps.fonttype'] = 42
 
 colors = ['#a6cee3', '#1f78b4', '#b2df8a', '#33a02c']
 
+f = open('../result.txt', 'r')
+data = json.load(f)
 
-compilers=["gcc", "clang (OSX)", "clang (Linux)"]
-transform = ["AddSwap   ", "IfSwap   ", "forReplace   "]
+keys = list(data.keys())
+vals = list(data.values())
 
-gcc = [1, 13, 1]
-clangOSX = [1, 11, 5]
-clangLinux = [1 , 15, 11]
+#print(keys)
 
+val_arr = np.array(vals)
+#print(val_arr)
+
+sums = np.sum(val_arr, axis=(1))
+#print(sums)
+
+baseline = val_arr[0]
+#print(baseline)
+
+normed_list = []
+for i in range(0, 8):
+    normed_list.append(abs(val_arr[i]-baseline))
+
+normed = np.array(normed_list)
+#print(normed) 
+
+rel_err_list = []
+for i in range(0, 8):
+    rel_err_list.append(normed[i]/baseline * 100)
+rel = np.array(rel_err_list)
+#print(rel)
+
+big_diff_list = []
+for i in range(0, 8):
+    currents = np.where(rel[i] > 1)
+    #print(np.where(rel[i] > 1))
+    big_diff_list.append(len(currents[0]))
+big_diff = np.array(big_diff_list)
+print(big_diff)
 
 font = {'size'   : 20}
 
@@ -23,25 +54,25 @@ matplotlib.rc('font', **font)
 
 
 fig, ax = plt.subplots(figsize=(12,8))
-bars = [0, 1, 2]
-posFirst = [x - 0.2 for x in bars]
-posThird = [x + 0.2 for x in bars]
+bars = [0, 1, 2, 3, 4, 5, 6, 7]
+#posFirst = [x - 0.2 for x in bars]
+#posThird = [x + 0.2 for x in bars]
 
-plt.ylim([0, 30])
+plt.ylim([0, 100])
 
 ax.spines['right'].set_visible(False)
 ax.spines['top'].set_visible(False)
 
-ax.bar(posFirst, gcc, width=0.2, align='edge', color=colors[0])
-ax.bar(bars, clangOSX, width=0.2, align='edge', color=colors[1])
-ax.bar(posThird, clangLinux, width=0.2, align='edge', color=colors[2], tick_label=transform)
+ax.bar(bars, big_diff, width=0.2, align='edge', color=colors[0], tick_label=keys)
+#ax.bar(bars, clangOSX, width=0.2, align='edge', color=colors[1])
+#ax.bar(posThird, clangLinux, width=0.2, align='edge', color=colors[2], tick_label=transform)
 
 
-legend = plt.legend(compilers, ncol=2, fontsize=20, bbox_to_anchor=(0.75, 1))
-legend.get_frame().set_edgecolor('white')
-legend.pos = 'upper left'
+#legend = plt.legend(compilers, ncol=2, fontsize=20, bbox_to_anchor=(0.75, 1))
+#legend.get_frame().set_edgecolor('white')
+#legend.pos = 'upper left'
 
-plt.ylabel('different assembly files')
+plt.ylabel('files with relative size diff bigger than 1')
 
 plt.tick_params(
     axis='x',          # changes apply to the x-axis
