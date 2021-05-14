@@ -17,15 +17,17 @@ keys = list(data.keys())
 vals = list(data.values())
 
 print(keys)
+keylabels = ['0000', '1111', '1110', '1101', '1100', '1011', '1010', '1001', '1000', '0111', '0110', '0101', '0100', '0011', '0010', '0001' ]
 
 val_arr = np.array(vals)
 #print(val_arr)
 
 sums = np.sum(val_arr, axis=(1))
-print(sums)
+#print(sums)
 
 baseline = val_arr[0]
 #print(baseline)
+#print(val_arr[1])
 
 normed_list = []
 for i in range(0, 16):
@@ -64,7 +66,7 @@ plt.ylim([0, 1000])
 ax.spines['right'].set_visible(False)
 ax.spines['top'].set_visible(False)
 
-ax.bar(bars, big_diff, width=0.2, align='edge', color=colors[0], tick_label=keys)
+ax.bar(bars, big_diff, width=0.2, align='edge', color=colors[0], tick_label=keylabels)
 #ax.bar(bars, clangOSX, width=0.2, align='edge', color=colors[1])
 #ax.bar(posThird, clangLinux, width=0.2, align='edge', color=colors[2], tick_label=transform)
 
@@ -80,7 +82,8 @@ plt.tick_params(
     which='both',      # both major and minor ticks are affected
     bottom=False,      # ticks along the bottom edge are off
     top=False,         # ticks along the top edge are off
-    labelbottom=True) # labels along the bottom edge are off
+    labelbottom=True,
+    labelrotation=90) # labels along the bottom edge are off
 
 plt.show()
 

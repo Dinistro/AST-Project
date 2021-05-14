@@ -16,6 +16,7 @@ parser.add_argument('--printCmd', dest='printCmd', required=False, type=bool, co
 parser.add_argument('--combo', dest='combo', required=False, type=bool, const=True, default=False, help='combine rewriters', nargs='?')
 parser.add_argument('--clangFlag', dest='clangFlag', required=False, default='', help='additional clang flags')
 parser.add_argument('--nodelete', dest='nodelete', required=False, type=bool, const=False, default=True, help='dont delete asm files', nargs='?')
+parser.add_argument('--compileOnly', dest='compileOnly', required=False, type=bool, const=True, default=False, help='only compile', nargs='?')
 parser.add_argument('--csmith', dest='csmith', required=False, type=bool, const=True, default=False, help='run csmith examples', nargs='?')
 parser.add_argument('--compiler', dest='compiler', 
         required=False, default='gcc', help='compiler to use')
@@ -49,7 +50,8 @@ includePath += ' -I${CSMITH_HOME}/runtime'
 if(args.transformer != 'all'):
     transformers = args.transformer
 
-subprocess.run('mkdir compf', cwd='./', text=True, timeout=None, shell=True)
+if not(args.compileOnly):
+    subprocess.run('mkdir compf', cwd='./', text=True, timeout=None, shell=True)
 
 def powerset(A):
     if A == []:
@@ -71,13 +73,14 @@ else:
 for powset in transformers_pset:
     powerstring = ''.join(powset)  
     print(powerstring)
-    toRun.append('mkdir ' +  powerstring + '_folder')
-    toRun.append('mkdir ' +  powerstring + '_asm')
-    toRun.append('cp ../' + examples_path +'* ' + powerstring + '_folder/')
+    if not(args.compileOnly):    
+        toRun.append('mkdir ' +  powerstring + '_folder')
+        toRun.append('mkdir ' +  powerstring + '_asm')
+        toRun.append('cp ../' + examples_path +'* ' + powerstring + '_folder/')
    
-    for trans in powset: 
-        #transforming
-        toRun.append('../build/bin/ast-project ' + powerstring + '_folder/* --' 
+        for trans in powset: 
+            #transforming
+            toRun.append('../build/bin/ast-project ' + powerstring + '_folder/* --' 
                     + trans + ' -- -I' + includePath + ' -Wno-narrowing -fpermissive -w' + args.clangFlag)
     
     #compiling
@@ -89,11 +92,12 @@ for powset in transformers_pset:
     toRun.append(runString)
     toRun.append('mv *.s ' + powerstring + '_asm')
     
-    #cleaning
-    deleteRun.append('rm ' + powerstring + '_folder/*')
-    deleteRun.append('rm ' + powerstring + '_asm/*')
-    deleteRun.append('rmdir '+ powerstring + '_folder')
-    deleteRun.append('rmdir '+ powerstring + '_asm')
+    if not(args.compileOnly):
+        #cleaning
+        deleteRun.append('rm ' + powerstring + '_folder/*')
+        deleteRun.append('rm ' + powerstring + '_asm/*')
+        deleteRun.append('rmdir '+ powerstring + '_folder')
+        deleteRun.append('rmdir '+ powerstring + '_asm')
     
 for cmd in toRun:
     if(args.printCmd):
@@ -109,8 +113,6 @@ if True:
     for i in range(0,num_examples):
         currentSizes.append(os.path.getsize('compf/' + powerstring + '_asm/prog' + str(i) + '.s'))
     binarySizes[powerstring] = currentSizes
-
-
 
 
 for powset in transformers_pset:
