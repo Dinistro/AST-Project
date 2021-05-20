@@ -1,24 +1,109 @@
 	.file	"rewritten.c"
 	.text
-	.p2align 4
-	.type	safe_mod_func_uint32_t_u_u, @function
-safe_mod_func_uint32_t_u_u:
-.LFB100:
-	.cfi_startproc
-	endbr64
-	movl	%edi, %r8d
-	testl	%esi, %esi
-	je	.L2
-	movl	%edi, %eax
-	xorl	%edx, %edx
-	divl	%esi
-	movl	%edx, %r8d
-.L2:
-	movl	%r8d, %eax
-	ret
-	.cfi_endproc
-.LFE100:
-	.size	safe_mod_func_uint32_t_u_u, .-safe_mod_func_uint32_t_u_u
+	.section	.rodata
+	.align 32
+.LC0:
+	.long	0
+	.long	5
+	.long	5
+	.long	5
+	.long	0
+	.long	2
+	.long	1
+	.long	1
+	.long	2
+	.long	0
+	.long	0
+	.long	5
+	.long	0
+	.long	3
+	.long	0
+	.long	2
+	.long	2
+	.long	5
+	.long	1
+	.long	0
+	.long	0
+	.long	3
+	.long	5
+	.long	3
+	.long	0
+	.long	0
+	.long	1
+	.long	5
+	.long	2
+	.long	2
+	.long	0
+	.long	3
+	.long	0
+	.long	5
+	.long	0
+	.long	0
+	.long	2
+	.long	1
+	.long	1
+	.long	2
+	.long	0
+	.long	5
+	.long	5
+	.long	5
+	.long	0
+	.long	2
+	.long	1
+	.long	1
+	.long	2
+	.long	0
+	.long	0
+	.long	5
+	.long	0
+	.long	3
+	.long	0
+	.long	2
+	.long	2
+	.long	5
+	.long	1
+	.long	0
+	.long	0
+	.long	3
+	.long	5
+	.long	3
+	.long	0
+	.long	0
+	.long	1
+	.long	5
+	.long	2
+	.long	2
+	.long	0
+	.long	3
+	.long	0
+	.long	5
+	.long	0
+	.long	0
+	.long	2
+	.long	1
+	.long	1
+	.long	2
+	.long	0
+	.long	5
+	.long	5
+	.long	5
+	.long	0
+	.long	2
+	.long	1
+	.long	1
+	.long	2
+	.long	0
+	.long	0
+	.long	5
+	.long	0
+	.long	3
+	.long	0
+	.long	2
+	.long	2
+	.long	5
+	.long	1
+	.long	0
+	.text
 	.p2align 4
 	.globl	a
 	.type	a, @function
@@ -26,18 +111,40 @@ a:
 .LFB130:
 	.cfi_startproc
 	endbr64
-	leaq	safe_mod_func_uint32_t_u_u(%rip), %rax
-	testl	%eax, %eax
-	jne	.L8
-	movl	0, %eax
-	testl	%eax, %eax
-	je	.L8
-.L9:
-	jmp	.L9
+	pushq	%rbx
+	.cfi_def_cfa_offset 16
+	.cfi_offset 3, -16
+	leaq	.LC0(%rip), %rsi
+	movl	$50, %ecx
+	subq	$416, %rsp
+	.cfi_def_cfa_offset 432
+	movq	%fs:40, %rax
+	movq	%rax, 408(%rsp)
+	xorl	%eax, %eax
+	movq	%rsp, %rdi
+	rep movsq
+	movl	392(%rsp), %ebx
 	.p2align 4,,10
 	.p2align 3
-.L8:
+.L2:
+	xorl	%eax, %eax
+	movl	%ebx, %edi
+	call	i@PLT
+	testl	%eax, %eax
+	je	.L2
+	movq	408(%rsp), %rax
+	xorq	%fs:40, %rax
+	jne	.L8
+	addq	$416, %rsp
+	.cfi_remember_state
+	.cfi_def_cfa_offset 16
+	xorl	%eax, %eax
+	popq	%rbx
+	.cfi_def_cfa_offset 8
 	ret
+.L8:
+	.cfi_restore_state
+	call	__stack_chk_fail@PLT
 	.cfi_endproc
 .LFE130:
 	.size	a, .-a

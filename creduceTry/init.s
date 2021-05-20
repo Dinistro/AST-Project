@@ -7,6 +7,18 @@ a:
 .LFB130:
 	.cfi_startproc
 	endbr64
+	subq	$8, %rsp
+	.cfi_def_cfa_offset 16
+	.p2align 4,,10
+	.p2align 3
+.L2:
+	xorl	%eax, %eax
+	movl	$1, %edi
+	call	i@PLT
+	testl	%eax, %eax
+	je	.L2
+	addq	$8, %rsp
+	.cfi_def_cfa_offset 8
 	ret
 	.cfi_endproc
 .LFE130:

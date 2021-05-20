@@ -102,7 +102,7 @@ for powset in transformers_pset:
 for cmd in toRun:
     if(args.printCmd):
         print(cmd)
-    subprocess.run(cmd, cwd=directory, text=True, timeout=None, shell=True, stderr=subprocess.PIPE)
+    #subprocess.run(cmd, cwd=directory, text=True, timeout=None, shell=True, stderr=subprocess.PIPE)
 
 binarySizes = {}
 
@@ -111,7 +111,7 @@ if True:
     powerstring = ''
     print(powerstring)
     for i in range(0,num_examples):
-        currentSizes.append(os.path.getsize('compf/' + powerstring + '_asm/prog' + str(i) + '.s'))
+        currentSizes.append(sum(1 for line in open('compf/' + powerstring + '_asm/prog' + str(i) + '.s')))
     binarySizes[powerstring] = currentSizes
 
 
@@ -120,7 +120,7 @@ for powset in transformers_pset:
     powerstring = ''.join(powset)
     print(powerstring)
     for i in range(0,num_examples):
-        currentSizes.append(os.path.getsize('compf/' + powerstring + '_asm/prog' + str(i) + '.s'))
+        currentSizes.append(sum(1 for line in open('compf/' + powerstring + '_asm/prog' + str(i) + '.s')))
     binarySizes[powerstring] = currentSizes
 
 #print(binarySizes)
