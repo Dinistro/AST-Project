@@ -40,7 +40,9 @@ rel_err_list = []
 for i in range(0, 16):
     rel_err_list.append(normed[i]/baseline * 100)
 rel = np.array(rel_err_list)
-#print(rel)
+max_val = max(rel[9])
+print(max_val)
+print(np.argmax(rel[9]))
 
 #print(val_arr.shape)
 big_diff_list = []
