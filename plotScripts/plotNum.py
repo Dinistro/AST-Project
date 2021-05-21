@@ -10,14 +10,25 @@ matplotlib.rcParams['ps.fonttype'] = 42
 
 colors = ['#a6cee3', '#1f78b4', '#b2df8a', '#33a02c']
 
-f = open('../result.txt', 'r')
+f = open('../gccO3.txt', 'r')
 data = json.load(f)
 
 keys = list(data.keys())
 vals = list(data.values())
 
+
+sorted_keys = []
+sorted_keys.append(keys[0])
+sorted_vals = []
+sorted_vals.append(vals[0])
+for i in range(1,16):
+    sorted_keys.append(keys[16-i])
+    sorted_vals.append(vals[16-i])
+vals = sorted_vals
+keys = sorted_keys
+
 print(keys)
-keylabels = ['0000', '1111', '1110', '1101', '1100', '1011', '1010', '1001', '1000', '0111', '0110', '0101', '0100', '0011', '0010', '0001' ]
+keylabels = ['0000', '0001', '0010','0011',  '0100','0101',  '0110', '0111', '1000', '1001','1010', '1011',  '1100', '1101', '1110', '1111']
 
 val_arr = np.array(vals)
 #print(val_arr)

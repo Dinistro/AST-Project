@@ -102,7 +102,7 @@ for powset in transformers_pset:
 for cmd in toRun:
     if(args.printCmd):
         print(cmd)
-    #subprocess.run(cmd, cwd=directory, text=True, timeout=None, shell=True, stderr=subprocess.PIPE)
+    subprocess.run(cmd, cwd=directory, text=True, timeout=None, shell=True, stderr=subprocess.PIPE)
 
 binarySizes = {}
 
