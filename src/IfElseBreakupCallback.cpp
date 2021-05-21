@@ -36,10 +36,10 @@ void IfElseBreakupCallback::run(const MatchFinder::MatchResult &Result) {
   repStrStream << "{\n";
   repStrStream << "int " << uniqueName << " = " << strOfT(sm, cond) << ";\n";
   repStrStream << "if(" << uniqueName << ")";
-  repStrStream << strOfT(sm, thenBlock) << "\n";
+  repStrStream << strOfT(sm, thenBlock) << ";\n";
 
   repStrStream << "if(!" << uniqueName << ")";
-  repStrStream << strOfT(sm, elseBlock) << "\n";
+  repStrStream << strOfT(sm, elseBlock) << ";\n";
 
   repStrStream << "}\n";
   repStrStream.flush();
