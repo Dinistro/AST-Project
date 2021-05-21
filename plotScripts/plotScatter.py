@@ -68,10 +68,10 @@ def get_data(filestring):
         big_diff_list.append(len(currents[0]))
     big_diff = np.array(big_diff_list)
     print(big_diff)
-    return big_diff, val_arr
+    return big_diff, rel, val_arr
 
-clang_diff, clang_vals = get_data('../clangO3.txt')
-gcc_diff, gcc_vals = get_data('../gccO3.txt')
+clang_diff, clang_rel, clang_vals = get_data('../clangO3.txt')
+gcc_diff, gcc_rel, gcc_vals = get_data('../gccO3.txt')
 
 font = {'size'   : 20}
 
@@ -79,25 +79,14 @@ matplotlib.rc('font', **font)
 
 
 fig, ax = plt.subplots(figsize=(12,8))
-bars = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
-posFirst = [x - 0.2 for x in bars]
-posThird = [x + 0.2 for x in bars]
-
-plt.ylim([0, 100])
 
 ax.spines['right'].set_visible(False)
 ax.spines['top'].set_visible(False)
 
-ax.bar(posFirst, gcc_diff, width=0.4, align='edge', color=colors[0])
-ax.bar(posThird, clang_diff, width=0.4, align='edge', color=colors[1], tick_label=keylabels)
-#ax.bar(posThird, clangLinux, width=0.2, align='edge', color=colors[2], tick_label=transform)
+ax.scatter(gcc_vals[gcc_rel != 0], gcc_rel[gcc_rel != 0])
 
-
-legend = plt.legend(['gcc', 'clang'], ncol=2, fontsize=20, bbox_to_anchor=(0.75, 1))
-legend.get_frame().set_edgecolor('white')
-legend.pos = 'upper left'
-
-plt.ylabel('files with relative size diff bigger than 1')
+plt.ylabel('relative size [%]')
+plt.xlabel('number of assembly lines')
 
 plt.tick_params(
     axis='x',          # changes apply to the x-axis
@@ -105,7 +94,7 @@ plt.tick_params(
     bottom=False,      # ticks along the bottom edge are off
     top=False,         # ticks along the top edge are off
     labelbottom=True,
-    labelrotation=90) # labels along the bottom edge are off
+    labelrotation=0) # labels along the bottom edge are off
 
 plt.show()
 
