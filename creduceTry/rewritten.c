@@ -2,25 +2,32 @@
 struct a {
   uint8_t b
 };
-h;
-int64_t d(uint16_t);
-int8_t e();
-c() {
+k;
+int64_t c(uint16_t);
+int8_t d(int32_t *, int32_t);
+e(void) {
   struct a f;
-  d(f.b);
+  c(f.b);
 }
-int64_t d(uint16_t g) {
-  for (;; g++)
-    if (e(), g)
+int64_t c(uint16_t g) {
+  int32_t h;
+  for (g = 0;; g++)
+    if (d(h, m()), g)
       return g;
 }
-int8_t e(int32_t *i) {
-  int32_t l;
-  if (*i) {
-    int *k, j;
-    for (; j < 1; j++)
-      k[j] = h;
-  } else
-    for (;;)
-      *i ^= l;
+int8_t d(int32_t *l, int32_t) {
+  int32_t o;
+  {
+    int _____c_________ = *l;
+    if (_____c_________) {
+      int *n, j;
+      for (; j < 1; j++)
+        n[j] = k;
+    };
+    if (!_____c_________) {
+      int i;
+      for (; i;)
+        *l ^= o;
+    };
+  }
 }

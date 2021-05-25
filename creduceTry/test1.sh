@@ -4,7 +4,6 @@ cp ./initial.c ./rewritten.c
 
 PROTO=$(( $(gcc -I${CSMITH_HOME}/runtime -Wstrict-prototypes -O3 ./initial.c -S -o ./init.s 2> >(grep Wstrict-prototype) | wc -l)))
 
-echo $PROTO
 if ((PROTO != 0)); then
     exit 1 
 fi
