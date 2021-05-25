@@ -2,11 +2,21 @@
 
 cp ./initial.c ./rewritten.c
 
-clang -I${CSMITH_HOME}/runtime -Wno-narrowing -fpermissive -w -O3 ./initial.c -S -o ./init.s
+PROTO=$(( $(gcc -I${CSMITH_HOME}/runtime -Wstrict-prototypes -O3 ./initial.c -S -o ./init.s 2> >(grep Wstrict-prototype) | wc -l)))
+
+echo $PROTO
+if ((PROTO != 0)); then
+    exit 1 
+fi
+
 
 /mnt/ETH/AST/AST-Project/build/bin/ast-project ./rewritten.c --ifElseBreakup -- -I/usr/local/lib/clang/11.1.0/include -I${CSMITH_HOME}/runtime -Wno-narrowing -fpermissive -w 2> /dev/null
 
-clang -I${CSMITH_HOME}/runtime -Wno-narrowing -fpermissive -w -O3 ./rewritten.c -S -o ./rewritten.s
+PROTO=$(( $(gcc -I${CSMITH_HOME}/runtime -Wstrict-prototypes -O3 ./rewritten.c -S -o ./rewritten.s 2> >(grep Wstrict-prototype) | wc -l)))
+
+if ((PROTO != 0)); then
+    exit 1 
+fi
 
 INIT=$(( $(cat ./init.s | wc -l)))
 REWRITTEN=$(( $(cat ./rewritten.s | wc -l)))
@@ -14,7 +24,7 @@ REWRITTEN=$(( $(cat ./rewritten.s | wc -l)))
 echo $INIT
 echo $REWRITTEN
 
-if ((REWRITTEN*5 < INIT)); then 
+if ((REWRITTEN > INIT*3)); then 
     exit 0
 else
     exit 1

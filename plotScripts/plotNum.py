@@ -70,8 +70,8 @@ def get_data(filestring):
     print(big_diff)
     return big_diff, val_arr
 
-clang_diff, clang_vals = get_data('../clangO3.txt')
 gcc_diff, gcc_vals = get_data('../gccO3.txt')
+clang_diff, clang_vals = get_data('../clangO3.txt')
 
 font = {'size'   : 20}
 
