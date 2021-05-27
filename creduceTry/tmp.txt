@@ -1,0 +1,624 @@
+In file included from /usr/local/lib/gcc/x86_64-pc-linux-gnu/11.1.0/include-fixed/limits.h:34,
+                 from /mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:51,
+                 from /mnt/ETH/AST/csmith-2.3.0/runtime/csmith.h:45,
+                 from ./rewritten.c:1:
+/usr/local/lib/gcc/x86_64-pc-linux-gnu/11.1.0/include-fixed/syslimits.h:7:2: warning: #include_next is a GCC extension
+    7 | #include_next <limits.h>
+      |  ^~~~~~~~~~~~
+In file included from /usr/local/lib/gcc/x86_64-pc-linux-gnu/11.1.0/include-fixed/syslimits.h:7,
+                 from /usr/local/lib/gcc/x86_64-pc-linux-gnu/11.1.0/include-fixed/limits.h:34,
+                 from /mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:51,
+                 from /mnt/ETH/AST/csmith-2.3.0/runtime/csmith.h:45,
+                 from ./rewritten.c:1:
+/usr/local/lib/gcc/x86_64-pc-linux-gnu/11.1.0/include-fixed/limits.h:203:2: warning: #include_next is a GCC extension
+  203 | #include_next <limits.h>                /* recurse down to the real one */
+      |  ^~~~~~~~~~~~
+In file included from /mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:55,
+                 from /mnt/ETH/AST/csmith-2.3.0/runtime/csmith.h:45,
+                 from ./rewritten.c:1:
+/usr/local/lib/gcc/x86_64-pc-linux-gnu/11.1.0/include/stdint.h:9:3: warning: #include_next is a GCC extension
+    9 | # include_next <stdint.h>
+      |   ^~~~~~~~~~~~
+./rewritten.c: In function ‘h’:
+./rewritten.c:14:1: warning: no return statement in function returning non-void [-Wreturn-type]
+   14 | }
+      | ^
+./rewritten.c: In function ‘e’:
+./rewritten.c:15:21: warning: implicit declaration of function ‘l’ [-Wimplicit-function-declaration]
+   15 | int *e(union c k) { l(f(k.d), k.d); }
+      |                     ^
+./rewritten.c:15:14: warning: no return statement in function returning non-void [-Wreturn-type]
+   15 | int *e(union c k) { l(f(k.d), k.d); }
+      |              ^
+./rewritten.c: In function ‘f’:
+./rewritten.c:20:10: warning: implicit declaration of function ‘p’ [-Wimplicit-function-declaration]
+   20 |     g(o, p());
+      |          ^
+./rewritten.c:21:1: warning: no return statement in function returning non-void [-Wreturn-type]
+   21 | }
+      | ^
+./rewritten.c: In function ‘g’:
+./rewritten.c:22:22: warning: ISO C does not support omitting parameter names in function definitions before C2X [-Wpedantic]
+   22 | int8_t g(int32_t *q, int32_t) {
+      |                      ^~~~~~~
+./rewritten.c:23:11: warning: ISO C forbids zero-size array ‘r’ [-Wpedantic]
+   23 |   int32_t r[0];
+      |           ^
+./rewritten.c:31:23: warning: ISO C forbids empty initializer braces [-Wpedantic]
+   31 |     struct a t[180] = {};
+      |                       ^
+./rewritten.c:32:27: warning: initialization of ‘struct a *’ from incompatible pointer type ‘struct a **’ [-Wincompatible-pointer-types]
+   32 |     struct a *u = t, *v = &u;
+      |                           ^
+./rewritten.c:39:16: warning: unused variable ‘c’ [-Wunused-variable]
+   39 |       uint16_t c[1];
+      |                ^
+./rewritten.c:32:23: warning: unused variable ‘v’ [-Wunused-variable]
+   32 |     struct a *u = t, *v = &u;
+      |                       ^
+./rewritten.c:46:1: warning: no return statement in function returning non-void [-Wreturn-type]
+   46 | }
+      | ^
+In file included from ./rewritten.c:1:
+At top level:
+/mnt/ETH/AST/csmith-2.3.0/runtime/csmith.h:121:1: warning: ‘transparent_crc_bytes’ defined but not used [-Wunused-function]
+  121 | transparent_crc_bytes (char *ptr, int nbytes, char* vname, int flag)
+      | ^~~~~~~~~~~~~~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/csmith.h:110:1: warning: ‘transparent_crc’ defined but not used [-Wunused-function]
+  110 | transparent_crc (uint64_t val, char* vname, int flag)
+      | ^~~~~~~~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/csmith.h:51:1: warning: ‘crc32_gentab’ defined but not used [-Wunused-function]
+   51 | crc32_gentab (void)
+      | ^~~~~~~~~~~~
+In file included from /mnt/ETH/AST/csmith-2.3.0/runtime/csmith.h:45,
+                 from ./rewritten.c:1:
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_convert_func_float_to_int32_t’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:1194:1: note: in expansion of macro ‘FUNC_NAME’
+ 1194 | FUNC_NAME(convert_func_float_to_int32_t)(float sf1 LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_div_func_double_f_f’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:1053:1: note: in expansion of macro ‘FUNC_NAME’
+ 1053 | FUNC_NAME(div_func_double_f_f)(double sf1, double sf2 LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_mul_func_double_f_f’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:1037:1: note: in expansion of macro ‘FUNC_NAME’
+ 1037 | FUNC_NAME(mul_func_double_f_f)(double sf1, double sf2 LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_sub_func_double_f_f’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:1025:1: note: in expansion of macro ‘FUNC_NAME’
+ 1025 | FUNC_NAME(sub_func_double_f_f)(double sf1, double sf2 LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_add_func_double_f_f’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:1013:1: note: in expansion of macro ‘FUNC_NAME’
+ 1013 | FUNC_NAME(add_func_double_f_f)(double sf1, double sf2 LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_div_func_float_f_f’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:994:1: note: in expansion of macro ‘FUNC_NAME’
+  994 | FUNC_NAME(div_func_float_f_f)(float sf1, float sf2 LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_mul_func_float_f_f’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:978:1: note: in expansion of macro ‘FUNC_NAME’
+  978 | FUNC_NAME(mul_func_float_f_f)(float sf1, float sf2 LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_sub_func_float_f_f’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:966:1: note: in expansion of macro ‘FUNC_NAME’
+  966 | FUNC_NAME(sub_func_float_f_f)(float sf1, float sf2 LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_add_func_float_f_f’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:954:1: note: in expansion of macro ‘FUNC_NAME’
+  954 | FUNC_NAME(add_func_float_f_f)(float sf1, float sf2 LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_rshift_func_uint64_t_u_u’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:934:1: note: in expansion of macro ‘FUNC_NAME’
+  934 | FUNC_NAME(rshift_func_uint64_t_u_u)(uint64_t left, unsigned int right LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_rshift_func_uint64_t_u_s’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:922:1: note: in expansion of macro ‘FUNC_NAME’
+  922 | FUNC_NAME(rshift_func_uint64_t_u_s)(uint64_t left, int right LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_lshift_func_uint64_t_u_u’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:910:1: note: in expansion of macro ‘FUNC_NAME’
+  910 | FUNC_NAME(lshift_func_uint64_t_u_u)(uint64_t left, unsigned int right LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_lshift_func_uint64_t_u_s’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:898:1: note: in expansion of macro ‘FUNC_NAME’
+  898 | FUNC_NAME(lshift_func_uint64_t_u_s)(uint64_t left, int right LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_div_func_uint64_t_u_u’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:886:1: note: in expansion of macro ‘FUNC_NAME’
+  886 | FUNC_NAME(div_func_uint64_t_u_u)(uint64_t ui1, uint64_t ui2 LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_mod_func_uint64_t_u_u’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:874:1: note: in expansion of macro ‘FUNC_NAME’
+  874 | FUNC_NAME(mod_func_uint64_t_u_u)(uint64_t ui1, uint64_t ui2 LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_mul_func_uint64_t_u_u’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:867:1: note: in expansion of macro ‘FUNC_NAME’
+  867 | FUNC_NAME(mul_func_uint64_t_u_u)(uint64_t ui1, uint64_t ui2 LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_sub_func_uint64_t_u_u’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:860:1: note: in expansion of macro ‘FUNC_NAME’
+  860 | FUNC_NAME(sub_func_uint64_t_u_u)(uint64_t ui1, uint64_t ui2 LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_add_func_uint64_t_u_u’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:853:1: note: in expansion of macro ‘FUNC_NAME’
+  853 | FUNC_NAME(add_func_uint64_t_u_u)(uint64_t ui1, uint64_t ui2 LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_unary_minus_func_uint64_t_u’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:846:1: note: in expansion of macro ‘FUNC_NAME’
+  846 | FUNC_NAME(unary_minus_func_uint64_t_u)(uint64_t ui LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_rshift_func_uint32_t_u_u’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:831:1: note: in expansion of macro ‘FUNC_NAME’
+  831 | FUNC_NAME(rshift_func_uint32_t_u_u)(uint32_t left, unsigned int right LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_rshift_func_uint32_t_u_s’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:819:1: note: in expansion of macro ‘FUNC_NAME’
+  819 | FUNC_NAME(rshift_func_uint32_t_u_s)(uint32_t left, int right LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_lshift_func_uint32_t_u_u’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:807:1: note: in expansion of macro ‘FUNC_NAME’
+  807 | FUNC_NAME(lshift_func_uint32_t_u_u)(uint32_t left, unsigned int right LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_lshift_func_uint32_t_u_s’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:795:1: note: in expansion of macro ‘FUNC_NAME’
+  795 | FUNC_NAME(lshift_func_uint32_t_u_s)(uint32_t left, int right LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_div_func_uint32_t_u_u’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:783:1: note: in expansion of macro ‘FUNC_NAME’
+  783 | FUNC_NAME(div_func_uint32_t_u_u)(uint32_t ui1, uint32_t ui2 LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_mod_func_uint32_t_u_u’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:771:1: note: in expansion of macro ‘FUNC_NAME’
+  771 | FUNC_NAME(mod_func_uint32_t_u_u)(uint32_t ui1, uint32_t ui2 LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_mul_func_uint32_t_u_u’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:764:1: note: in expansion of macro ‘FUNC_NAME’
+  764 | FUNC_NAME(mul_func_uint32_t_u_u)(uint32_t ui1, uint32_t ui2 LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_sub_func_uint32_t_u_u’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:757:1: note: in expansion of macro ‘FUNC_NAME’
+  757 | FUNC_NAME(sub_func_uint32_t_u_u)(uint32_t ui1, uint32_t ui2 LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_add_func_uint32_t_u_u’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:750:1: note: in expansion of macro ‘FUNC_NAME’
+  750 | FUNC_NAME(add_func_uint32_t_u_u)(uint32_t ui1, uint32_t ui2 LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_unary_minus_func_uint32_t_u’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:743:1: note: in expansion of macro ‘FUNC_NAME’
+  743 | FUNC_NAME(unary_minus_func_uint32_t_u)(uint32_t ui LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_rshift_func_uint16_t_u_u’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:729:1: note: in expansion of macro ‘FUNC_NAME’
+  729 | FUNC_NAME(rshift_func_uint16_t_u_u)(uint16_t left, unsigned int right LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_rshift_func_uint16_t_u_s’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:717:1: note: in expansion of macro ‘FUNC_NAME’
+  717 | FUNC_NAME(rshift_func_uint16_t_u_s)(uint16_t left, int right LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_lshift_func_uint16_t_u_u’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:705:1: note: in expansion of macro ‘FUNC_NAME’
+  705 | FUNC_NAME(lshift_func_uint16_t_u_u)(uint16_t left, unsigned int right LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_lshift_func_uint16_t_u_s’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:693:1: note: in expansion of macro ‘FUNC_NAME’
+  693 | FUNC_NAME(lshift_func_uint16_t_u_s)(uint16_t left, int right LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_div_func_uint16_t_u_u’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:681:1: note: in expansion of macro ‘FUNC_NAME’
+  681 | FUNC_NAME(div_func_uint16_t_u_u)(uint16_t ui1, uint16_t ui2 LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_mod_func_uint16_t_u_u’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:669:1: note: in expansion of macro ‘FUNC_NAME’
+  669 | FUNC_NAME(mod_func_uint16_t_u_u)(uint16_t ui1, uint16_t ui2 LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_mul_func_uint16_t_u_u’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:662:1: note: in expansion of macro ‘FUNC_NAME’
+  662 | FUNC_NAME(mul_func_uint16_t_u_u)(uint16_t ui1, uint16_t ui2 LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_sub_func_uint16_t_u_u’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:655:1: note: in expansion of macro ‘FUNC_NAME’
+  655 | FUNC_NAME(sub_func_uint16_t_u_u)(uint16_t ui1, uint16_t ui2 LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_add_func_uint16_t_u_u’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:648:1: note: in expansion of macro ‘FUNC_NAME’
+  648 | FUNC_NAME(add_func_uint16_t_u_u)(uint16_t ui1, uint16_t ui2 LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_unary_minus_func_uint16_t_u’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:641:1: note: in expansion of macro ‘FUNC_NAME’
+  641 | FUNC_NAME(unary_minus_func_uint16_t_u)(uint16_t ui LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_rshift_func_uint8_t_u_u’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:627:1: note: in expansion of macro ‘FUNC_NAME’
+  627 | FUNC_NAME(rshift_func_uint8_t_u_u)(uint8_t left, unsigned int right LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_rshift_func_uint8_t_u_s’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:615:1: note: in expansion of macro ‘FUNC_NAME’
+  615 | FUNC_NAME(rshift_func_uint8_t_u_s)(uint8_t left, int right LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_lshift_func_uint8_t_u_u’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:603:1: note: in expansion of macro ‘FUNC_NAME’
+  603 | FUNC_NAME(lshift_func_uint8_t_u_u)(uint8_t left, unsigned int right LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_lshift_func_uint8_t_u_s’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:591:1: note: in expansion of macro ‘FUNC_NAME’
+  591 | FUNC_NAME(lshift_func_uint8_t_u_s)(uint8_t left, int right LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_div_func_uint8_t_u_u’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:579:1: note: in expansion of macro ‘FUNC_NAME’
+  579 | FUNC_NAME(div_func_uint8_t_u_u)(uint8_t ui1, uint8_t ui2 LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_mod_func_uint8_t_u_u’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:567:1: note: in expansion of macro ‘FUNC_NAME’
+  567 | FUNC_NAME(mod_func_uint8_t_u_u)(uint8_t ui1, uint8_t ui2 LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_mul_func_uint8_t_u_u’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:560:1: note: in expansion of macro ‘FUNC_NAME’
+  560 | FUNC_NAME(mul_func_uint8_t_u_u)(uint8_t ui1, uint8_t ui2 LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_sub_func_uint8_t_u_u’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:553:1: note: in expansion of macro ‘FUNC_NAME’
+  553 | FUNC_NAME(sub_func_uint8_t_u_u)(uint8_t ui1, uint8_t ui2 LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_add_func_uint8_t_u_u’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:546:1: note: in expansion of macro ‘FUNC_NAME’
+  546 | FUNC_NAME(add_func_uint8_t_u_u)(uint8_t ui1, uint8_t ui2 LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_unary_minus_func_uint8_t_u’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:539:1: note: in expansion of macro ‘FUNC_NAME’
+  539 | FUNC_NAME(unary_minus_func_uint8_t_u)(uint8_t ui LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_rshift_func_int64_t_s_u’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:521:1: note: in expansion of macro ‘FUNC_NAME’
+  521 | FUNC_NAME(rshift_func_int64_t_s_u)(int64_t left, unsigned int right LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_rshift_func_int64_t_s_s’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:509:1: note: in expansion of macro ‘FUNC_NAME’
+  509 | FUNC_NAME(rshift_func_int64_t_s_s)(int64_t left, int right LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_lshift_func_int64_t_s_u’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:497:1: note: in expansion of macro ‘FUNC_NAME’
+  497 | FUNC_NAME(lshift_func_int64_t_s_u)(int64_t left, unsigned int right LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_lshift_func_int64_t_s_s’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:485:1: note: in expansion of macro ‘FUNC_NAME’
+  485 | FUNC_NAME(lshift_func_int64_t_s_s)(int64_t left, int right LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_div_func_int64_t_s_s’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:473:1: note: in expansion of macro ‘FUNC_NAME’
+  473 | FUNC_NAME(div_func_int64_t_s_s)(int64_t si1, int64_t si2 LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_mod_func_int64_t_s_s’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:461:1: note: in expansion of macro ‘FUNC_NAME’
+  461 | FUNC_NAME(mod_func_int64_t_s_s)(int64_t si1, int64_t si2 LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_mul_func_int64_t_s_s’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:447:1: note: in expansion of macro ‘FUNC_NAME’
+  447 | FUNC_NAME(mul_func_int64_t_s_s)(int64_t si1, int64_t si2 LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_sub_func_int64_t_s_s’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:433:1: note: in expansion of macro ‘FUNC_NAME’
+  433 | FUNC_NAME(sub_func_int64_t_s_s)(int64_t si1, int64_t si2 LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_add_func_int64_t_s_s’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:419:1: note: in expansion of macro ‘FUNC_NAME’
+  419 | FUNC_NAME(add_func_int64_t_s_s)(int64_t si1, int64_t si2 LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_unary_minus_func_int64_t_s’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:405:1: note: in expansion of macro ‘FUNC_NAME’
+  405 | FUNC_NAME(unary_minus_func_int64_t_s)(int64_t si LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_rshift_func_int32_t_s_u’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:390:1: note: in expansion of macro ‘FUNC_NAME’
+  390 | FUNC_NAME(rshift_func_int32_t_s_u)(int32_t left, unsigned int right LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_rshift_func_int32_t_s_s’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:378:1: note: in expansion of macro ‘FUNC_NAME’
+  378 | FUNC_NAME(rshift_func_int32_t_s_s)(int32_t left, int right LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_lshift_func_int32_t_s_u’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:366:1: note: in expansion of macro ‘FUNC_NAME’
+  366 | FUNC_NAME(lshift_func_int32_t_s_u)(int32_t left, unsigned int right LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_lshift_func_int32_t_s_s’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:354:1: note: in expansion of macro ‘FUNC_NAME’
+  354 | FUNC_NAME(lshift_func_int32_t_s_s)(int32_t left, int right LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_div_func_int32_t_s_s’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:342:1: note: in expansion of macro ‘FUNC_NAME’
+  342 | FUNC_NAME(div_func_int32_t_s_s)(int32_t si1, int32_t si2 LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_mod_func_int32_t_s_s’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:330:1: note: in expansion of macro ‘FUNC_NAME’
+  330 | FUNC_NAME(mod_func_int32_t_s_s)(int32_t si1, int32_t si2 LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_mul_func_int32_t_s_s’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:316:1: note: in expansion of macro ‘FUNC_NAME’
+  316 | FUNC_NAME(mul_func_int32_t_s_s)(int32_t si1, int32_t si2 LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_sub_func_int32_t_s_s’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:302:1: note: in expansion of macro ‘FUNC_NAME’
+  302 | FUNC_NAME(sub_func_int32_t_s_s)(int32_t si1, int32_t si2 LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_add_func_int32_t_s_s’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:288:1: note: in expansion of macro ‘FUNC_NAME’
+  288 | FUNC_NAME(add_func_int32_t_s_s)(int32_t si1, int32_t si2 LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_unary_minus_func_int32_t_s’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:274:1: note: in expansion of macro ‘FUNC_NAME’
+  274 | FUNC_NAME(unary_minus_func_int32_t_s)(int32_t si LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_rshift_func_int16_t_s_u’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:260:1: note: in expansion of macro ‘FUNC_NAME’
+  260 | FUNC_NAME(rshift_func_int16_t_s_u)(int16_t left, unsigned int right LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_rshift_func_int16_t_s_s’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:248:1: note: in expansion of macro ‘FUNC_NAME’
+  248 | FUNC_NAME(rshift_func_int16_t_s_s)(int16_t left, int right LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_lshift_func_int16_t_s_u’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:236:1: note: in expansion of macro ‘FUNC_NAME’
+  236 | FUNC_NAME(lshift_func_int16_t_s_u)(int16_t left, unsigned int right LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_lshift_func_int16_t_s_s’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:224:1: note: in expansion of macro ‘FUNC_NAME’
+  224 | FUNC_NAME(lshift_func_int16_t_s_s)(int16_t left, int right LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_div_func_int16_t_s_s’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:212:1: note: in expansion of macro ‘FUNC_NAME’
+  212 | FUNC_NAME(div_func_int16_t_s_s)(int16_t si1, int16_t si2 LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_mod_func_int16_t_s_s’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:200:1: note: in expansion of macro ‘FUNC_NAME’
+  200 | FUNC_NAME(mod_func_int16_t_s_s)(int16_t si1, int16_t si2 LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_mul_func_int16_t_s_s’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:186:1: note: in expansion of macro ‘FUNC_NAME’
+  186 | FUNC_NAME(mul_func_int16_t_s_s)(int16_t si1, int16_t si2 LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_sub_func_int16_t_s_s’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:172:1: note: in expansion of macro ‘FUNC_NAME’
+  172 | FUNC_NAME(sub_func_int16_t_s_s)(int16_t si1, int16_t si2 LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_add_func_int16_t_s_s’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:158:1: note: in expansion of macro ‘FUNC_NAME’
+  158 | FUNC_NAME(add_func_int16_t_s_s)(int16_t si1, int16_t si2 LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_unary_minus_func_int16_t_s’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:144:1: note: in expansion of macro ‘FUNC_NAME’
+  144 | FUNC_NAME(unary_minus_func_int16_t_s)(int16_t si LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_rshift_func_int8_t_s_u’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:130:1: note: in expansion of macro ‘FUNC_NAME’
+  130 | FUNC_NAME(rshift_func_int8_t_s_u)(int8_t left, unsigned int right LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_rshift_func_int8_t_s_s’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:118:1: note: in expansion of macro ‘FUNC_NAME’
+  118 | FUNC_NAME(rshift_func_int8_t_s_s)(int8_t left, int right LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_lshift_func_int8_t_s_u’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:106:1: note: in expansion of macro ‘FUNC_NAME’
+  106 | FUNC_NAME(lshift_func_int8_t_s_u)(int8_t left, unsigned int right LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_lshift_func_int8_t_s_s’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:94:1: note: in expansion of macro ‘FUNC_NAME’
+   94 | FUNC_NAME(lshift_func_int8_t_s_s)(int8_t left, int right LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_div_func_int8_t_s_s’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:82:1: note: in expansion of macro ‘FUNC_NAME’
+   82 | FUNC_NAME(div_func_int8_t_s_s)(int8_t si1, int8_t si2 LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_mod_func_int8_t_s_s’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:70:1: note: in expansion of macro ‘FUNC_NAME’
+   70 | FUNC_NAME(mod_func_int8_t_s_s)(int8_t si1, int8_t si2 LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_mul_func_int8_t_s_s’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:56:1: note: in expansion of macro ‘FUNC_NAME’
+   56 | FUNC_NAME(mul_func_int8_t_s_s)(int8_t si1, int8_t si2 LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_sub_func_int8_t_s_s’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:42:1: note: in expansion of macro ‘FUNC_NAME’
+   42 | FUNC_NAME(sub_func_int8_t_s_s)(int8_t si1, int8_t si2 LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_add_func_int8_t_s_s’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:28:1: note: in expansion of macro ‘FUNC_NAME’
+   28 | FUNC_NAME(add_func_int8_t_s_s)(int8_t si1, int8_t si2 LOG_INDEX)
+      | ^~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:99:23: warning: ‘safe_unary_minus_func_int8_t_s’ defined but not used [-Wunused-function]
+   99 | #define FUNC_NAME(x) (safe_##x)
+      |                       ^~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/safe_math.h:14:1: note: in expansion of macro ‘FUNC_NAME’
+   14 | FUNC_NAME(unary_minus_func_int8_t_s)(int8_t si LOG_INDEX)
+      | ^~~~~~~~~
+In file included from /mnt/ETH/AST/csmith-2.3.0/runtime/random_inc.h:89,
+                 from /mnt/ETH/AST/csmith-2.3.0/runtime/csmith.h:45,
+                 from ./rewritten.c:1:
+/mnt/ETH/AST/csmith-2.3.0/runtime/platform_generic.h:49:1: warning: ‘platform_main_end’ defined but not used [-Wunused-function]
+   49 | platform_main_end(uint32_t crc, int flag)
+      | ^~~~~~~~~~~~~~~~~
+/mnt/ETH/AST/csmith-2.3.0/runtime/platform_generic.h:43:1: warning: ‘platform_main_begin’ defined but not used [-Wunused-function]
+   43 | platform_main_begin(void)
+      | ^~~~~~~~~~~~~~~~~~~
+./rewritten.c: In function ‘g.constprop.isra’:
+./rewritten.c:43:14: warning: array subscript 0 is outside array bounds of ‘int32_t[0]’ {aka ‘int[]’} [-Warray-bounds]
+   43 |       *q ^= r[0];
+      |             ~^~~
+./rewritten.c:23:11: note: while referencing ‘r’
+   23 |   int32_t r[0];
+      |           ^

@@ -1,31 +1,57 @@
 	.file	"initial.c"
 	.text
 	.p2align 4
+	.globl	e
+	.type	e, @function
+e:
+.LFB107:
+	.cfi_startproc
+	subq	$8, %rsp
+	.cfi_def_cfa_offset 16
+	xorl	%eax, %eax
+	call	m
+	xorl	%eax, %eax
+	addq	$8, %rsp
+	.cfi_def_cfa_offset 8
+	jmp	m
+	.cfi_endproc
+.LFE107:
+	.size	e, .-e
+	.p2align 4
 	.globl	c
 	.type	c, @function
 c:
-.LFB130:
+.LFB108:
 	.cfi_startproc
-	endbr64
+	subq	$8, %rsp
+	.cfi_def_cfa_offset 16
+	xorl	%eax, %eax
+	call	m
+	xorl	%eax, %eax
+	call	m
+	movl	$1, %eax
+	addq	$8, %rsp
+	.cfi_def_cfa_offset 8
 	ret
 	.cfi_endproc
-.LFE130:
+.LFE108:
 	.size	c, .-c
-	.ident	"GCC: (Ubuntu 9.3.0-17ubuntu1~20.04) 9.3.0"
+	.p2align 4
+	.globl	d
+	.type	d, @function
+d:
+.LFB109:
+	.cfi_startproc
+	ret
+	.cfi_endproc
+.LFE109:
+	.size	d, .-d
+	.globl	k
+	.bss
+	.align 4
+	.type	k, @object
+	.size	k, 4
+k:
+	.zero	4
+	.ident	"GCC: (GNU) 11.1.0"
 	.section	.note.GNU-stack,"",@progbits
-	.section	.note.gnu.property,"a"
-	.align 8
-	.long	 1f - 0f
-	.long	 4f - 1f
-	.long	 5
-0:
-	.string	 "GNU"
-1:
-	.align 8
-	.long	 0xc0000002
-	.long	 3f - 2f
-2:
-	.long	 0x3
-3:
-	.align 8
-4:
