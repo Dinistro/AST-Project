@@ -51,7 +51,9 @@ def get_data(filestring):
     
     rel_err_list = []
     for i in range(0, 16):
-        rel_err_list.append(normed[i]/baseline * 100)
+        rel_err_list.append(list(normed[i]/baseline * 100))
+    for i in range(0, 16):
+        rel_err_list[i].remove(max(rel_err_list[i]))
     rel = np.array(rel_err_list)
     
     for i in range(0, 16):
@@ -59,6 +61,7 @@ def get_data(filestring):
         max_val = max(rel[i])
         print(max_val)
         print(np.argmax(rel[i]))
+        
     
     #print(val_arr.shape)
     big_diff_list = []
