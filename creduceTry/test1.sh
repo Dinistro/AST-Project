@@ -92,6 +92,10 @@ else
   exit 1
 fi
 
+gcc -Wstrict-prototypes -Wfatal-errors -fsanitize=undefined -pedantic -Wall -Wsystem-headers -O3 -I${CSMITH_HOME}/runtime ./initial.c -o thing.out
+
+(ulimit -t 5; ./thing.out)
+
 INIT=$(( $(cat ./init.s | wc -l)))
 REWRITTEN=$(( $(cat ./rewritten.s | wc -l)))
 
