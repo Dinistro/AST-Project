@@ -18,7 +18,10 @@ def get_data(filestring):
     
     keys = list(data.keys())
     vals = list(data.values())
-    
+
+    toDelete = open('../failures.txt')
+    fails = np.loadtxt(toDelete, dtype=int)
+    #print(fails)    
     
     sorted_keys = []
     sorted_keys.append(keys[0])
@@ -31,7 +34,15 @@ def get_data(filestring):
     keys = sorted_keys
     
     print(keys)
-    
+   
+    dict_list = []
+    for i in range(0, 16):
+        dict_list.append(dict(zip(range(0, 1000), vals[i]))) 
+
+
+    for i in range(0, 16):
+        for j in range(0, 190):
+            del dict_list[i][fails[j]]
     val_arr = np.array(vals)
     #print(val_arr)
     
@@ -52,8 +63,6 @@ def get_data(filestring):
     rel_err_list = []
     for i in range(0, 16):
         rel_err_list.append(list(normed[i]/baseline * 100))
-    for i in range(0, 16):
-        rel_err_list[i].remove(max(rel_err_list[i]))
     rel = np.array(rel_err_list)
     
     for i in range(0, 16):
