@@ -107,20 +107,20 @@ for cmd in toRun:
 binarySizes = {}
 
 if True:
-    currentSizes = []
+    currentSizes = {}
     powerstring = ''
     print(powerstring)
     for i in range(0,num_examples):
-        currentSizes.append(sum(1 for line in open('compf/' + powerstring + '_asm/prog' + str(i) + '.s')))
+        currentSizes[i] = sum(1 for line in open('compf/' + powerstring + '_asm/prog' + str(i) + '.s'))
     binarySizes[powerstring] = currentSizes
 
 
 for powset in transformers_pset:
-    currentSizes = []
+    currentSizes = {}
     powerstring = ''.join(powset)
     print(powerstring)
     for i in range(0,num_examples):
-        currentSizes.append(sum(1 for line in open('compf/' + powerstring + '_asm/prog' + str(i) + '.s')))
+        currentSizes[i] = sum(1 for line in open('compf/' + powerstring + '_asm/prog' + str(i) + '.s'))
     binarySizes[powerstring] = currentSizes
 
 #print(binarySizes)

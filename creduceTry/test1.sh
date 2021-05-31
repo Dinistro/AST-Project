@@ -3,9 +3,15 @@
 cp ./initial.c ./rewritten.c
 TMP0='./tmp.txt'
 TMP1='./tmp.txt'
+clang -Wstrict-prototypes -Wfatal-errors -pedantic -Wall -fsanitize=undefined -Wsystem-headers -O3 -I${CSMITH_HOME}/runtime ./initial.c -o ./tmp.out 2> /dev/null
+
+(ulimit -t 5; ./tmp.out)
+if ! test "$?" = "0"; then
+    exit 1
+fi 
 
 if
-gcc -Wstrict-prototypes -Wfatal-errors -pedantic -Wall -Wsystem-headers -O3 -c -I${CSMITH_HOME}/runtime ./initial.c -S -o ./init.s> $TMP1 2>&1  &&\
+clang -Wstrict-prototypes -Wfatal-errors -pedantic -Wall -Wsystem-headers -O3 -c -I${CSMITH_HOME}/runtime ./initial.c -S -o ./init.s> $TMP1 2>&1  &&\
 #! grep -q 'conversions than data arguments' "$TMP0" &&\
 #! grep -q 'incompatible redeclaration' "$TMP0" &&\
 #! grep -q 'ordered comparison between pointer' "$TMP0" &&\
@@ -50,7 +56,7 @@ fi
 /mnt/ETH/AST/AST-Project/build/bin/ast-project ./rewritten.c --ifElseBreakup -- -I/usr/local/lib/clang/11.1.0/include -I${CSMITH_HOME}/runtime -Wno-narrowing -fpermissive -w 2> /dev/null
 
 if
-gcc -Wstrict-prototypes -Wfatal-errors -pedantic -Wall -Wsystem-headers -O3 -c -I${CSMITH_HOME}/runtime ./rewritten.c -S -o ./rewritten.s> $TMP1 2>&1  &&\
+clang -Wstrict-prototypes -Wfatal-errors -pedantic -Wall -Wsystem-headers -O3 -c -I${CSMITH_HOME}/runtime ./rewritten.c -S -o ./rewritten.s> $TMP1 2>&1  &&\
 #! grep -q 'conversions than data arguments' "$TMP0" &&\
 #! grep -q 'incompatible redeclaration' "$TMP0" &&\
 #! grep -q 'ordered comparison between pointer' "$TMP0" &&\
