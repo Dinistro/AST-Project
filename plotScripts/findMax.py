@@ -23,13 +23,10 @@ def get_data(filestring):
             del data[keys[i]][fails[j]]
         vals.append(list(data[keys[i]].values()))
         indeces.append(list(data[keys[i]].keys()))
-        print(data[keys[i]])
     
      
     val_arr = np.array(vals)
     index_arr = np.array(indeces)
-    print(val_arr)
-    print(index_arr)
     
     baseline = val_arr[15]
     #print(baseline)
@@ -54,5 +51,7 @@ def get_data(filestring):
         print(index_arr[i][np.argmax(rel[i])])
     
     print(np.count_nonzero(val_arr[0]==31))
+    print(np.count_nonzero(val_arr[0]==27))
  
+get_data('../gccO3.txt')
 get_data('../clangO3.txt')
