@@ -45,12 +45,12 @@ def get_data(filestring):
     rel = np.array(rel_err_list)
     
     for i in range(0, 16):
-        print(i)
+        print('num: ', i)
         max_val = max(rel[i])
-        print(max_val)
-        print(index_arr[i][np.argmax(rel[i])])
+        print('max: ', max_val)
+        print('max index: ', index_arr[i][np.argmax(rel[i])])
     
-    print(np.count_nonzero(val_arr[0]==31))
+    print(np.count_nonzero(val_arr[0]==26))
     print(np.count_nonzero(val_arr[0]==27))
  
 get_data('../gccO3.txt')

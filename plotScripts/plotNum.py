@@ -17,27 +17,19 @@ def get_data(filestring):
     data = json.load(f)
     
     keys = list(data.keys())
-    vals = list(data.values())
 
     toDelete = open('../failures.txt')
-    fails = np.loadtxt(toDelete, dtype=int)
+    fails = np.loadtxt(toDelete, dtype=str)
     #print(fails)    
     
-    sorted_keys = []
-    sorted_keys.append(keys[0])
-    sorted_vals = []
-    sorted_vals.append(vals[0])
-    for i in range(1,16):
-        sorted_keys.append(keys[16-i])
-        sorted_vals.append(vals[16-i])
-    vals = sorted_vals
-    keys = sorted_keys
-    
-    print(keys)
-   
+    vals = []
+    indeces = []
     for i in range(0, 16):
-        for j in range(0, 190):
-            del vals[i][fails[j]-j]
+        for j in range(0, len(fails)):
+            del data[keys[i]][fails[j]]
+        vals.append(list(data[keys[i]].values()))
+        indeces.append(list(data[keys[i]].keys()))
+    
     val_arr = np.array(vals)
     #print(val_arr)
     
