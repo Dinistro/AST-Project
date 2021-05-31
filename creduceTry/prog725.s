@@ -1,5 +1,5 @@
 	.text
-	.file	"initial.c"
+	.file	"prog725.c"
 	.section	.rodata.cst16,"aM",@progbits,16
 	.p2align	4                               # -- Begin function main
 .LCPI0_0:

@@ -35,14 +35,9 @@ def get_data(filestring):
     
     print(keys)
    
-    dict_list = []
-    for i in range(0, 16):
-        dict_list.append(dict(zip(range(0, 1000), vals[i]))) 
-
-
     for i in range(0, 16):
         for j in range(0, 190):
-            del dict_list[i][fails[j]]
+            del vals[i][fails[j]-j]
     val_arr = np.array(vals)
     #print(val_arr)
     
@@ -64,13 +59,6 @@ def get_data(filestring):
     for i in range(0, 16):
         rel_err_list.append(list(normed[i]/baseline * 100))
     rel = np.array(rel_err_list)
-    
-    for i in range(0, 16):
-        print(i)
-        max_val = max(rel[i])
-        print(max_val)
-        print(np.argmax(rel[i]))
-        
     
     #print(val_arr.shape)
     big_diff_list = []
