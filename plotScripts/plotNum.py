@@ -30,6 +30,16 @@ def get_data(filestring):
         vals.append(list(data[keys[i]].values()))
         indeces.append(list(data[keys[i]].keys()))
     
+    sorted_keys = []
+    sorted_keys.append(keys[0])
+    sorted_vals = []
+    sorted_vals.append(vals[0])
+    for i in range(1,16):
+        sorted_keys.append(keys[16-i])
+        sorted_vals.append(vals[16-i])
+    vals = sorted_vals
+    keys = sorted_keys
+    
     val_arr = np.array(vals)
     #print(val_arr)
     
@@ -55,8 +65,8 @@ def get_data(filestring):
     #print(val_arr.shape)
     big_diff_list = []
     for i in range(0, 16):
-        currents = np.where(rel[i] >= 1)
-        #print(np.where(rel[i] >= 1))
+        currents = np.where(rel[i] != 0)
+        print(np.where(rel[i] != 0))
         big_diff_list.append(len(currents[0]))
     big_diff = np.array(big_diff_list)
     print(big_diff)
@@ -75,7 +85,7 @@ bars = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
 posFirst = [x - 0.2 for x in bars]
 posThird = [x + 0.2 for x in bars]
 
-plt.ylim([0, 100])
+plt.ylim([0, 25])
 
 ax.spines['right'].set_visible(False)
 ax.spines['top'].set_visible(False)
@@ -89,7 +99,7 @@ legend = plt.legend(['gcc', 'clang'], ncol=2, fontsize=20, bbox_to_anchor=(0.75,
 legend.get_frame().set_edgecolor('white')
 legend.pos = 'upper left'
 
-plt.ylabel('files with relative size diff bigger than 1')
+plt.ylabel('cases with size differences')
 
 plt.tick_params(
     axis='x',          # changes apply to the x-axis

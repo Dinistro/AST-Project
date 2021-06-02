@@ -27,7 +27,8 @@ def get_data(filestring):
      
     val_arr = np.array(vals)
     index_arr = np.array(indeces)
-    
+   
+    print('max file: ', max(val_arr[15])) 
     baseline = val_arr[15]
     #print(baseline)
     #print(val_arr[1])
@@ -46,12 +47,15 @@ def get_data(filestring):
     
     for i in range(0, 16):
         print('num: ', i)
+        print('trans: ', keys[i])
         max_val = max(rel[i])
+        max_ind = int(index_arr[i][np.argmax(rel[i])])
         print('max: ', max_val)
-        print('max index: ', index_arr[i][np.argmax(rel[i])])
+        print('max index: ', max_ind)
     
-    print(np.count_nonzero(val_arr[0]==26))
-    print(np.count_nonzero(val_arr[0]==27))
+
+    print('size 26: ', np.count_nonzero(val_arr[0]==26))
+    print('size 27: ', np.count_nonzero(val_arr[0]==27))
  
-get_data('../gccO3.txt')
 get_data('../clangO3.txt')
+get_data('../gccO3.txt')
