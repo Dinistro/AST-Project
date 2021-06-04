@@ -9,7 +9,7 @@ matplotlib.rcParams['pdf.fonttype'] = 42
 matplotlib.rcParams['ps.fonttype'] = 42
 
 keylabels = ['0000', '0001', '0010','0011',  '0100','0101',  '0110', '0111', '1000', '1001','1010', '1011',  '1100', '1101', '1110', '1111']
-colors = ['#a6cee3', '#1f78b4', '#b2df8a', '#33a02c']
+colors = ['#1f78b4', '#33a02c', '#e31a1c']
 
 def get_data(filestring):
 
@@ -75,12 +75,12 @@ def get_data(filestring):
 gcc_diff, gcc_vals = get_data('../gccO3.txt')
 clang_diff, clang_vals = get_data('../clangO3.txt')
 
-font = {'size'   : 20}
+font = {'size'   : 25}
 
 matplotlib.rc('font', **font)
 
 
-fig, ax = plt.subplots(figsize=(12,8))
+fig, ax = plt.subplots(figsize=(12,9))
 bars = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]
 posFirst = [x - 0.2 for x in bars]
 posThird = [x + 0.2 for x in bars]
@@ -95,11 +95,12 @@ ax.bar(posThird, clang_diff, width=0.4, align='edge', color=colors[1], tick_labe
 #ax.bar(posThird, clangLinux, width=0.2, align='edge', color=colors[2], tick_label=transform)
 
 
-legend = plt.legend(['gcc', 'clang'], ncol=2, fontsize=20, bbox_to_anchor=(0.75, 1))
+legend = plt.legend(['GCC', 'Clang'], ncol=2, fontsize=20, bbox_to_anchor=(0.75, 1))
 legend.get_frame().set_edgecolor('white')
 legend.pos = 'upper left'
 
-plt.ylabel('cases with size differences')
+ax.set_ylabel('cases with difference', rotation='horizontal')
+ax.yaxis.set_label_coords(0.1,1.04)
 
 plt.tick_params(
     axis='x',          # changes apply to the x-axis

@@ -9,7 +9,8 @@ matplotlib.rcParams['pdf.fonttype'] = 42
 matplotlib.rcParams['ps.fonttype'] = 42
 
 keylabels = ['0000', '0001', '0010','0011',  '0100','0101',  '0110', '0111', '1000', '1001','1010', '1011',  '1100', '1101', '1110', '1111']
-colors = ['#a6cee3', '#1f78b4', '#b2df8a', '#33a02c', '#a6cee3', '#1f78b4', '#b2df8a', '#33a02c', '#a6cee3', '#1f78b4', '#b2df8a', '#33a02c', '#a6cee3', '#1f78b4', '#b2df8a', '#33a02c' ]
+colors = ['#1f78b4', '#33a02c', '#e31a1c']
+
 
 def get_data(filestring):
 
@@ -56,12 +57,12 @@ def get_data(filestring):
 
 gcc_rel, gcc_vals = get_data('../gccO3.txt')
 
-font = {'size'   : 20}
+font = {'size'   : 25}
 
 matplotlib.rc('font', **font)
 
 
-fig, ax = plt.subplots(figsize=(12,8))
+fig, ax = plt.subplots(figsize=(12,9))
 
 ax.spines['right'].set_visible(False)
 ax.spines['top'].set_visible(False)
@@ -93,19 +94,21 @@ ifBreaks_vals = ifBreaks[ifBreaks != 0]
 ifBreaksNo_vals = ifBreaksNo[ifBreaksNo != 0]
 
 
-labels = ['ifSwap', 'ifElseBreakup', 'Both']
+labels = ['IfSwap', 'IfElseBreakup', 'Both']
 
-ax.scatter(baseline[ifs != 0], ifs_vals, color=colors[0])
-ax.scatter(baseline[ifBreaksNo != 0], ifBreaksNo_vals, color=colors[1])
-ax.scatter(baseline[ifBreaks != 0], ifBreaks_vals, color=colors[2])
+ax.scatter(baseline[ifs != 0], ifs_vals, color=colors[0], marker='+', s=175)
+ax.scatter(baseline[ifBreaksNo != 0], ifBreaksNo_vals, color=colors[1], marker='2', s=175)
+ax.scatter(baseline[ifBreaks != 0], ifBreaks_vals, color=colors[2], marker='1', s=175)
 
 legend = plt.legend(labels, ncol=2, fontsize=20, bbox_to_anchor=(0.75, 1))
 legend.pos = 'best'
 
 plt.ylim([-100, 100])
 
-plt.ylabel('relative size [%]')
-plt.xlabel('number of assembly lines')
+
+plt.xlabel('number of initial assembly lines')
+ax.set_ylabel('relative size [%]', rotation='horizontal')
+ax.yaxis.set_label_coords(0,1.04)
 
 plt.tick_params(
     axis='x',          # changes apply to the x-axis
