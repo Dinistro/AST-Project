@@ -32,6 +32,7 @@ def get_data(filestring):
         indeces.append(list(data[keys[i]].keys()))
     
     val_arr = np.array(vals)
+    index_arr = np.array(indeces)
     #print(val_arr)
     
     sums = np.sum(val_arr, axis=(1))
@@ -53,9 +54,9 @@ def get_data(filestring):
         rel_err_list.append(list(normed[i]/baseline * 100))
     rel = np.array(rel_err_list)
     
-    return rel, val_arr
+    return rel, val_arr, index_arr
 
-gcc_rel, gcc_vals = get_data('../gccO3.txt')
+gcc_rel, gcc_vals, index_arr = get_data('../gccO3.txt')
 
 font = {'size'   : 25}
 
@@ -78,13 +79,31 @@ ax.spines['top'].set_visible(False)
 #print(gcc_rel)
 #print(gcc_vals)
 
-baseline = gcc_vals[15]
+baseline = gcc_vals[0]
 #only ifSwap
 ifs = gcc_rel[8]
+tmp = (ifs != 0)
+for i in range(0, len(tmp)):
+    if tmp[i]:
+        print(index_arr[8][i])
+
+
 #both
 ifBreaks = gcc_rel[4]
+tmp = (ifBreaks != 0)
+for i in range(0, len(tmp)):
+    if tmp[i]:
+        print(index_arr[4][i])
+
+
 #only breakup
 ifBreaksNo = gcc_rel[12]
+tmp = (ifBreaksNo != 0)
+for i in range(0, len(tmp)):
+    if tmp[i]:
+        print(index_arr[12][i])
+
+
 ifs_vals = gcc_vals[8]
 ifBreaks_vals = gcc_vals[4]
 ifBreaksNo_vals = gcc_vals[12]
@@ -96,9 +115,9 @@ ifBreaksNo_vals = ifBreaksNo[ifBreaksNo != 0]
 
 labels = ['IfSwap', 'IfElseBreakup', 'Both']
 
-ax.scatter(baseline[ifs != 0], ifs_vals, color=colors[0], marker='+', s=175)
-ax.scatter(baseline[ifBreaksNo != 0], ifBreaksNo_vals, color=colors[1], marker='2', s=175)
-ax.scatter(baseline[ifBreaks != 0], ifBreaks_vals, color=colors[2], marker='1', s=175)
+ax.scatter(baseline[ifs != 0], ifs[ifs != 0], color=colors[0], marker='+', s=175)
+ax.scatter(baseline[ifBreaksNo != 0], ifBreaksNo[ifBreaksNo != 0], color=colors[1], marker='2', s=175)
+ax.scatter(baseline[ifBreaks != 0], ifBreaks[ifBreaks != 0], color=colors[2], marker='1', s=175)
 
 legend = plt.legend(labels, ncol=2, fontsize=20, bbox_to_anchor=(0.75, 1))
 legend.pos = 'best'
